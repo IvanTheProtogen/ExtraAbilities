@@ -22,7 +22,7 @@ ExtraAbilities.Notify = function(A,B,C,D,E,F,G) -- you can set values to nil, if
       fixedData[button2] = G
   end 
       
-	return ExtraAbilities.CloneRef(game:GetService("Players")).LocalPlayer:FindFirstChildOfClass("PlayerGui"):SetCore("SendNotification",fixedData)
+	return ExtraAbilities.CloneRef(game:GetService("StarterGui")):SetCore("SendNotification",fixedData)
 end 
 
 ExtraAbilities.Message = function(...)
