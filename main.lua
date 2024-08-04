@@ -30,11 +30,11 @@ ExtraAbilities.Notify = function(A,B,C,D,E,F,G) -- you can set values to nil, if
 end 
 end
 
-ExtraAbilities.Message = function(...)
+ExtraAbilities.Info = function(...)
     return ExtraAbilities.CloneRef(game:GetService("TestService")):Message(...)
 end 
 
-ExtraAbilities.Message("This script is using ExtraAbilities module! (Get ExtraAbilities module here: https://github.com/IvanTheProtogen/ExtraAbilities/)")
+ExtraAbilities.Info("This script is using ExtraAbilities module! (Get ExtraAbilities module here: https://github.com/IvanTheProtogen/ExtraAbilities/)")
 ExtraAbilities.Notify("This script is using ExtraAbilities module!", "Get ExtraAbilities module here: https://github.com/IvanTheProtogen/ExtraAbilities/", "rbxassetid://5273570766")
 
 if ExtraAbilities.IsClient() then -- This function is exploit-only.
@@ -130,6 +130,7 @@ ExtraAbilities.GetSpecificDescendants = function(parent, data) -- example: Extra
 end 
 
 ExtraAbilities.Chat = function(str)cref=ExtraAbilities.CloneRef;return pcall(function()str=tostring(str)if cref(game:GetService("TextChatService")).ChatVersion==Enum.ChatVersion.TextChatService then cref(game:GetService("TextChatService")).TextChannels.RBXGeneral:SendAsync(str)else cref(game:GetService("ReplicatedStorage")).DefaultChatSystemChatEvents.SayMessageRequest:FireServer(str, "All")end end)end;
+ExtraAbilities.Message = ExtraAbilities.Chat
 
 ExtraAbilities.FindHirerachy = function(inst)
 	local nextinst = inst 
@@ -188,7 +189,7 @@ else
     pcall(function()returnstr = "Something went wrong while executing the script!" end)
 end
 
-ExtraAbilities.Message(returnstr.." (Time Elapsed: "..tostring(time()-previoustime)..") Data:\n"..Leftover)
+ExtraAbilities.Info(returnstr.." (Time Elapsed: "..tostring(time()-previoustime)..") Data:\n"..Leftover)
 return ExtraAbilities.Notify(returnstr.." (Time Elapsed: "..tostring(time()-previoustime)..")", Leftover, Icon)
 
 end 
