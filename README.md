@@ -36,7 +36,7 @@ Do not worry, ExtraAbilities module doesn't place any kind of backdoor onto your
 
 This chapter is about basic functions
 
-## 2.1. CloneRef function.
+## 2.1. CloneRef function. (EXPLOIT-ONLY)
 
 `ExtraAbilities.CloneRef()` is a shortcut to `cloneref()`, but with error handling. `cloneref()` is a global exploit-only function, that creates a reference to the instance to be used. This function helps exploits to bypass in-game anti-cheat scripts.
 
@@ -45,7 +45,7 @@ Example use:
 ExtraAbilities.CloneRef(game:GetService("Workspace")).Part:Destroy();
 ```
 
-## 2.2. Chat function.
+## 2.2. Chat function. (CLIENT-ONLY)
 
 `ExtraAbilities.Chat()` makes you chat any message possible, no matter what kind of version TextChatService has.
 
@@ -54,7 +54,7 @@ Example use:
 ExtraAbilities.Chat("I like waffles!");
 ```
 
-### 2.2.1. Message function.
+### 2.2.1. Message function. (CLIENT-ONLY)
 
 `ExtraAbilities.Message()` is an alternative to `ExtraAbilities.Chat()`, which is equivalent to it.
 
@@ -101,7 +101,6 @@ print("Waited 1 second.")
 Using this function will increase lag for a little bit. 
 
 ## 2.6. IsClient and IsServer functions.
-
 `ExtraAbilities.IsClient()` and `ExtraAbilities.IsServer()` are shortcuts to `ExtraAbilities.CloneRef(game:GetService("RunService")):IsClient()` and `ExtraAbilities.CloneRef(game:GetService("RunService")):IsServer()`.
 
 Example use:
@@ -127,4 +126,108 @@ print(ExtraAbilities.GetTableType({1,2,3})) -- "array"
 print(ExtraAbilities.GetTableType({["1"]=1,["2"]=2,["3"]=3})) -- "dictionary"
 ```
 
-## 3.2. 
+## 3.2. SmartTableItemCount function.
+
+`ExtraAbilities.SmartTableItemCount()` counts items in the table more efficiently and stable than `#table`.
+
+Example use:
+```lua
+local tbl = {["1"]=1,["2"]=2,["3"]=3}
+
+print(#tbl) -- 0
+print(ExtraAbilities.SmartTableItemCount(tbl)) -- 3
+```
+
+## 3.3. SafeRequire function. (EXPLOIT-ONLY)
+
+Unlike `require()`, `ExtraAbilities.SafeRequire()` function provides more stability with requiring the asset properly.
+
+Example use:
+```lua
+ExtraAbilities.SafeRequire(1234567890)();
+```
+
+## 3.4. Notify function. (CLIENT-ONLY)
+
+`ExtraAbilities.Notify()` spawns a default Notification with provided settings.
+
+In order to skip some data, you can use `nil`.
+
+Dictionary use:
+```
+title     --    string                           --     (required)
+text      --    string                           --     (required)
+icon      --    string                           --     (optional)
+duration  --    number                           --     5
+callback  --    Instance (BindableFunction)      --     (optional)
+button1   --    string                           --     (optional)
+button2   --    string                           --     (optional)
+```
+
+Example use:
+```lua
+ExtraAbilities.Notify("Error!","Failed to load files!",nil,10)
+```
+
+## 3.5. FindHirerachy function.
+
+`ExtraAbilities.FindHirerachy()` finds hirerachy (AKA ancestry) of an instance.
+
+Example use:
+
+```lua
+print(ExtraAbilities.FindHirerachy(game.Players.LocalPlayer.Character)) -- 'game:GetService("Workspace"):WaitForChild("IvanTheProtogen0")'
+```
+
+### 3.5.1. Development Note.
+
+Planning to make `ExtraAbilities.FindHirerachyTable()` to make scripts easier.
+
+## 3.6. WaitForSpecificDescendant function.
+
+`ExtraAbilities.WaitForSpecificDescendant()` waits for specific descendant with specific properties of one parent. If the duration times out, the extra-function errors. This extra-function is so useful, you won't believe how useful it is.
+
+Into 1st argument, an Instance must be set.
+Into 2nd argument, a dictionary of properties and values must be set.
+Into 3rd argument, a number can be set, default value is Infinity.
+
+
+Example use:
+```lua
+local properties = {
+	["ClassName"] = "Model",
+	["Name"] = "unknown",
+	["Parent"] = workspace
+}
+
+ExtraAbilities.WaitForSpecificDescendant(workspace,properties):Destroy()
+```
+
+## 3.7. GetSpecificDescendants function.
+
+`ExtraAbilities.GetSpecificDescendants()` gets specifc descendants of one parent with specific properties. Same arguments, except 3rd argument, from `ExtraAbilities.WaitForSpecificDescendant()` function.
+
+Example use:
+```lua
+local properties = {
+	["ClassName"] = "Part",
+	["Name"] = "Sensory",
+	["Parent"] = workspace,
+	["Transparency"] = 1
+}
+
+for i,v in pairs(ExtraAbilities.GetSpecificDescendants(game,properties)) do
+	v:Destroy()
+end
+```
+
+# 4. Credits 
+
+ExtraAbilities module and documentation are both made by IvanIzWorthless (AKA IvanTheProtogen).
+
+Learn Roblox Lua here!:
+http://lua.org/manual/
+http://create.roblox.com/docs/
+http://devforum.roblox.com/
+https://web.archive.org/web/20220924132612/https://x.synapse.to/docs/
+https://robloxapi.github.io/ref/
