@@ -30,7 +30,7 @@ ExtraAbilities.Message = function(...)
 end 
 
 ExtraAbilities.Message("This script is using ExtraAbilities module! (Get ExtraAbilities module here: https://github.com/IvanTheProtogen/ExtraAbilities/)")
-ExtraAbilities.Notify("This script is using ExtraAbilities module!", "Get ExtraAbilities module here: https://github.com/IvanTheProtogen/ExtraAbilities/", "rbxassetid://5273570797")
+ExtraAbilities.Notify("This script is using ExtraAbilities module!", "Get ExtraAbilities module here: https://github.com/IvanTheProtogen/ExtraAbilities/", "rbxassetid://5273570766")
 
 ExtraAbilities.SafeRequire = function(module) -- unlike original require(), this one is less harmful.
 	if typeof(module) == "Instance" then 
