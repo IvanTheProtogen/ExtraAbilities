@@ -147,7 +147,7 @@ ExtraAbilities.FindHirerachy = function(inst)
 		else 
 			if inst.Parent.Parent == game then 
 				isReturned = true 
-				return 'game:GetService("'..nextinst.Parent.Name..'")' 
+				return 'game:GetService("'..nextinst.Parent.Name..'")'.resultstr
 			else 
 				resultstr = ':WaitForChild("'..nextinst.Parent.Name..'")'..resultstr 
 				nextinst = nextinst.Parent 
