@@ -58,8 +58,8 @@ ExtraAbilities.SmartWait = function(duration)
     end
 end 
 
-ExtraAbilities.GetTableType = function(table) -- oh boy this is starting to get fun 
-    for key,value in pairs(table) do 
+ExtraAbilities.GetTableType = function(tbl) -- oh boy this is starting to get fun 
+    for key,value in pairs(tbl) do 
         if typeof(key) ~= "number" then 
             return "dictionary" 
         end 
@@ -67,16 +67,20 @@ ExtraAbilities.GetTableType = function(table) -- oh boy this is starting to get 
     return "array" 
 end 
 
+ExtraAbilities.SmartTableItemCount = function(tbl) 
+	local count = 0 
+	for i,v in pairs(tbl) do 
+		count=count+1 
+	end 
+	return count 
+end
+
 ExtraAbilities.WaitForSpecificDescendant = function(parent, data, argduration) -- example: ExtraAbilities.WaitForSpecificDescendant(workspace, { ["Name"] = "Part", ["ClassName"] = "Part", ["Parent"] = workspace })
     if ExtraAbilities.GetTableType(data) ~= "dictionary" then 
         error("dictionary expected, got "..ExtraAbilities.GetTableType(data), 0) 
     end 
 
-		local dataAmount = 0
-
-    for key,value in pairs(data) do 
-          dataAmount=dataAmount+1
-    end
+	local dataAmount = ExtraAbilities.SmartTableItemCount(data)
 
     local duration 
     if tonumber(argduration) ~= nil then 
@@ -108,11 +112,7 @@ ExtraAbilities.GetSpecificDescendants = function(parent, data) -- example: Extra
         error("dictionary expected, got "..ExtraAbilities.GetTableType(data), 0) 
     end 
 
-    local dataAmount = 0
-
-    for key,value in pairs(data) do 
-          dataAmount=dataAmount+1
-    end
+    local dataAmount = ExtraAbilities.SmartTableItemCount(data)
         
     for index,instance in pairs(parent:GetDescendants()) do 
         local catchedData = 0
