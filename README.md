@@ -89,8 +89,42 @@ end
 
 `ExtraAbilities.SmartWait()` is a custom `wait()` function, that uses both `ExtraAbilities.QuickWait()` and `time()`.
 
+Example use:
+```lua
+print("Waiting 1 second...")
+ExtraAbilities.SmartWait(1)
+print("Waited 1 second.")
+```
+
 ### 2.5.1. NOTICE 
 
 Using this function will increase lag for a little bit. 
 
-## 2.6. 
+## 2.6. IsClient and IsServer functions.
+
+`ExtraAbilities.IsClient()` and `ExtraAbilities.IsServer()` are shortcuts to `ExtraAbilities.CloneRef(game:GetService("RunService")):IsClient()` and `ExtraAbilities.CloneRef(game:GetService("RunService")):IsServer()`.
+
+Example use:
+```lua
+if ExtraAbilities.IsServer() then
+	print("This script is running on the server.")
+else
+	print("This script is running on the client.")
+end
+```
+
+
+# 3. Advanced Functions.
+
+This chapter contains functions, that are complex, complicated, but very useful for your scripts.
+
+## 3.1. GetTableType function.
+
+`ExtraAbilities.GetTableType()` is a table extra-function(), that can determine, if the table is an array or dictionary.
+
+```lua
+print(ExtraAbilities.GetTableType({1,2,3})) -- "array"
+print(ExtraAbilities.GetTableType({["1"]=1,["2"]=2,["3"]=3})) -- "dictionary"
+```
+
+## 3.2. 
