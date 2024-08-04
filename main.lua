@@ -96,6 +96,7 @@ ExtraAbilities.WaitForSpecificDescendant = function(parent, data, argduration) -
 end 
 
 ExtraAbilities.GetSpecificDescendants = function(parent, data) -- example: ExtraAbilities.WaitForSpecificDescendant(workspace, { ["Name"] = "Part", ["ClassName"] = "Part", ["Parent"] = workspace })
+    warn(#data)
     local returningtable = {} 
     
     if ExtraAbilities.GetTableType(data) ~= "dictionary" then 
@@ -109,6 +110,7 @@ ExtraAbilities.GetSpecificDescendants = function(parent, data) -- example: Extra
                 catchedData = catchedData+1 
             end 
         end 
+        warn(catchedData)
         if catchedData == #data then 
             table.insert(returningtable,instance)
         end 
