@@ -4,7 +4,7 @@
 
 Welcome to the official documentation of ExtraAbilities, here you will learn how to use the ExtraAbilities module in your scripts.
 
-# 0. Requiring the module.
+# 1. Requiring the module.
 
 In order to require the ExtraAbilities module, we should use `local`, `loadstring()` and `game:HttpGet()`.
 
@@ -14,7 +14,7 @@ local ExtraAbilities;if game:GetService("RunService"):IsClient()then ExtraAbilit
 
 Now, we've required the ExtraAbilities module, we have access to more functions, that we can use. Let's introduce the functions we now have.
 
-## 0.1. IMPORTANT NOTE
+## 1.1. IMPORTANT NOTE
 
 If you're using this module for your own Roblox Game, please remember to enable Allow HTTP Requests in Roblox Studio's Game Settings and enable LoadStringEnabled property under ServerScriptService in Roblox Studio.
 
@@ -22,7 +22,7 @@ If you're using this module for your own Roblox Game, please remember to enable 
 
 ![LoadStringEnabled](<https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/6/5/2/652e3d049ce056fbc7372cee5ab526f06fc1b3f1.png>)
 
-## 0.2. BE CAREFUL 
+### 1.1.1. BE CAREFUL 
 
 Enabling HTTP requests and LoadStringEnabled might put both your Roblox Game and Roblox Account under the risk, these 2 settings open more vulnerabilities to your Roblox Game's Replication Filtering and may increase the risk of backdoors.
 
@@ -32,11 +32,11 @@ If your Roblox Game is caught being backdoored by Roblox Moderation, your Roblox
 
 Do not worry, ExtraAbilities module doesn't place any kind of backdoor onto your game. It's source code is open and free-to-view and is not obfuscated at all. The only thing that is, kinda, obfuscated is the chat message function.
 
-# 1. Basic functions.
+# 2. Basic functions.
 
 This chapter is about basic functions
 
-## 1.1. CloneRef function.
+## 2.1. CloneRef function.
 
 `ExtraAbilities.CloneRef()` is a shortcut to `cloneref()`, but with error handling. `cloneref()` is a global exploit-only function, that creates a reference to the instance to be used. This function helps exploits to bypass in-game anti-cheat scripts.
 
@@ -45,7 +45,7 @@ Example use:
 ExtraAbilities.CloneRef(game:GetService("Workspace")).Part:Destroy();
 ```
 
-## 1.2. Chat function.
+## 2.2. Chat function.
 
 `ExtraAbilities.Chat()` makes you chat any message possible, no matter what kind of version TextChatService has.
 
@@ -54,11 +54,43 @@ Example use:
 ExtraAbilities.Chat("I like waffles!");
 ```
 
-## 1.3. Info function.
+### 2.2.1. Message function.
 
-`ExtraAbilities.Info()` prints information type of output into console.
+`ExtraAbilities.Message()` is an alternative to `ExtraAbilities.Chat()`, which is equivalent to it.
+
+## 2.3. Info function.
+
+`ExtraAbilities.Info()` prints an information type of output into console.
 
 Example use:
 ```lua
 ExtraAbilities.Info("Successfully loaded!");
 ```
+
+## 2.4. QuickWait function.
+
+`ExtraAbilities.QuickWait()` is equivalent to `ExtraAbilities.CloneRef(game:GetService("RunService")).Heartbeat:Wait()`. This function is faster than both `wait()` and `task.wait()`.
+
+Speed comparison:
+```
+wait() = 0.03 seconds
+task.wait() = 0.01 seconds
+ExtraAbilities.QuickWait() = 0.004 seconds
+```
+
+Example use:
+```lua
+while ExtraAbilities.QuickWait() do
+	print("Hi!")
+end
+```
+
+## 2.5. SmartWait function.
+
+`ExtraAbilities.SmartWait()` is a custom `wait()` function, that uses both `ExtraAbilities.QuickWait()` and `time()`.
+
+### 2.5.1. NOTICE 
+
+Using this function will increase lag for a little bit. 
+
+## 2.6. 
