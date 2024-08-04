@@ -72,6 +72,8 @@ ExtraAbilities.WaitForSpecificDescendant = function(parent, data, argduration) -
         error("dictionary expected, got "..ExtraAbilities.GetTableType(data), 0) 
     end 
 
+    warn(#data)
+
     local duration 
     if tonumber(argduration) ~= nil then 
         duration = tonumber(argduration) 
@@ -87,6 +89,7 @@ ExtraAbilities.WaitForSpecificDescendant = function(parent, data, argduration) -
                     catchedData = catchedData+1 
                 end 
             end 
+            warn(catchedData)
             if catchedData == #data then 
                 return instance 
             end 
