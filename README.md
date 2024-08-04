@@ -4,7 +4,7 @@
 
 Welcome to the official documentation of ExtraAbilities, here you will learn how to use the ExtraAbilities module in your scripts.
 
-# 1. Requiring the module.
+# 0. Requiring the module.
 
 In order to require the ExtraAbilities module, we should use `local`, `loadstring()` and `game:HttpGet()`.
 
@@ -14,7 +14,7 @@ local ExtraAbilities;if game:GetService("RunService"):IsClient()then ExtraAbilit
 
 Now, we've required the ExtraAbilities module, we have access to more functions, that we can use. Let's introduce the functions we now have.
 
-# IMPORTANT NOTE
+## 0.1. IMPORTANT NOTE
 
 If you're using this module for your own Roblox Game, please remember to enable Allow HTTP Requests in Roblox Studio's Game Settings and enable LoadStringEnabled property under ServerScriptService in Roblox Studio.
 
@@ -22,7 +22,7 @@ If you're using this module for your own Roblox Game, please remember to enable 
 
 ![LoadStringEnabled](<https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/6/5/2/652e3d049ce056fbc7372cee5ab526f06fc1b3f1.png>)
 
-## BE CAREFUL 
+## 0.2. BE CAREFUL 
 
 Enabling HTTP requests and LoadStringEnabled might put both your Roblox Game and Roblox Account under the risk, these 2 settings open more vulnerabilities to your Roblox Game's Replication Filtering and may increase the risk of backdoors.
 
@@ -32,8 +32,33 @@ If your Roblox Game is caught being backdoored by Roblox Moderation, your Roblox
 
 Do not worry, ExtraAbilities module doesn't place any kind of backdoor onto your game. It's source code is open and free-to-view and is not obfuscated at all. The only thing that is, kinda, obfuscated is the chat message function.
 
-# 1.1. CloneRef function.
+# 1. Basic functions.
 
-`ExtraAbilities.CloneRef()` is a shortcut to `cloneref()`, but with error handling. `cloneref()` is a global exploit-only function, that creates a reference to the instance to be used. This function helps exploits to bypas in-game anti-cheat scripts.
+This chapter is about basic functions
 
-# 1.2. Chat function.
+## 1.1. CloneRef function.
+
+`ExtraAbilities.CloneRef()` is a shortcut to `cloneref()`, but with error handling. `cloneref()` is a global exploit-only function, that creates a reference to the instance to be used. This function helps exploits to bypass in-game anti-cheat scripts.
+
+Example use:
+```lua
+ExtraAbilities.CloneRef(game:GetService("Workspace")).Part:Destroy();
+```
+
+## 1.2. Chat function.
+
+`ExtraAbilities.Chat()` makes you chat any message possible, no matter what kind of version TextChatService has.
+
+Example use:
+```lua
+ExtraAbilities.Chat("I like waffles!");
+```
+
+## 1.3. Info function.
+
+`ExtraAbilities.Info()` prints information type of output into console.
+
+Example use:
+```lua
+ExtraAbilities.Info("Successfully loaded!");
+```
