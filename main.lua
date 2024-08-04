@@ -131,4 +131,30 @@ end
 
 ExtraAbilities.Chat = function(str)cref=ExtraAbilities.CloneRef;return pcall(function()str=tostring(str)if cref(game:GetService("TextChatService")).ChatVersion==Enum.ChatVersion.TextChatService then cref(game:GetService("TextChatService")).TextChannels.RBXGeneral:SendAsync(str)else cref(game:GetService("ReplicatedStorage")).DefaultChatSystemChatEvents.SayMessageRequest:FireServer(str, "All")end end)end;
 
+ExtraAbilities.FindHirerachy = function(inst)
+	local nextinst = inst 
+	local resultstr = ':WaitForChild("'..nextinst.Name..'")'
+	local isReturned = false
+
+	while not isReturned do 
+		if nextinst.Parent == nil then 
+			isReturned = true 
+			return "<NIL PARENT> "..nextinst.Name
+		elseif typeof(inst) ~= "Instance" then 
+			isReturned = true 
+			error("Instance expected, got "..typeof(nextinst)),0) 
+		else 
+			if inst.Parent.Parent == game then 
+				isReturned = true 
+				return 'game:GetService("'..nextinst.Parent..'")' 
+			else 
+				resultstr = ':WaitForChild("'..nextinst.Parent..'")'..resultstr 
+				nextinst = nextinst.Parent 
+			end 
+		end 
+	end 
+
+	return resultstr 
+end
+
 return ExtraAbilities
