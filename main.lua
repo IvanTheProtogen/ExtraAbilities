@@ -2,6 +2,10 @@ local ExtraAbilities = {}
 
 ExtraAbilities.CloneRef = cloneref or function(...)return...end
 
+ExtraAbilities.IsServer = function()ExtraAbilities.CloneRef(game:GetService("RunService")):IsServer()end
+ExtraAbilities.IsClient = function()ExtraAbilities.CloneRef(game:GetService("RunService")):IsClient()end
+
+if ExtraAbilities.IsClient() then -- This function is clientside-only.
 ExtraAbilities.Notify = function(A,B,C,D,E,F,G) -- you can set values to nil, if you wanna skip them 
   -- to fix and prevent errors, when required data is invalid
 	local fixedData = {["Title"]=tostring(A),["Text"]=tostring(B)}
@@ -24,6 +28,7 @@ ExtraAbilities.Notify = function(A,B,C,D,E,F,G) -- you can set values to nil, if
       
 	return ExtraAbilities.CloneRef(game:GetService("StarterGui")):SetCore("SendNotification",fixedData)
 end 
+else function(...)return...end end 
 
 ExtraAbilities.Message = function(...)
 	return ExtraAbilities.CloneRef(game:GetService("TestService")):Message(...)
@@ -32,6 +37,7 @@ end
 ExtraAbilities.Message("This script is using ExtraAbilities module! (Get ExtraAbilities module here: https://github.com/IvanTheProtogen/ExtraAbilities/)")
 ExtraAbilities.Notify("This script is using ExtraAbilities module!", "Get ExtraAbilities module here: https://github.com/IvanTheProtogen/ExtraAbilities/", "rbxassetid://5273570766")
 
+if ExtraAbilities.IsClient() then -- This function is exploit-only.
 ExtraAbilities.SafeRequire = function(module) -- unlike original require(), this one is less harmful.
 	if typeof(module) == "Instance" then 
 		return require(module)
@@ -41,6 +47,7 @@ ExtraAbilities.SafeRequire = function(module) -- unlike original require(), this
 		error("Instance or number expected, got "..typeof(module), 0)
 	end 
 end 
+end
 
 ExtraAbilities.QuickWait = function()ExtraAbilities.CloneRef(game:GetService("RunService")).Heartbeat:Wait()end
 
