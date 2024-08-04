@@ -28,7 +28,7 @@ ExtraAbilities.Notify = function(A,B,C,D,E,F,G) -- you can set values to nil, if
       
     return ExtraAbilities.CloneRef(game:GetService("StarterGui")):SetCore("SendNotification",fixedData)
 end 
-else ExtraAbilities.Notify=function(...)return...end end
+end
 
 ExtraAbilities.Message = function(...)
     return ExtraAbilities.CloneRef(game:GetService("TestService")):Message(...)
@@ -47,9 +47,9 @@ ExtraAbilities.SafeRequire = function(module) -- unlike original require(), this
         error("Instance or number expected, got "..typeof(module), 0)
     end 
 end 
-else ExtraAbilities.SafeRequire=function(...)return...end end
+end 
 
-ExtraAbilities.QuickWait = function()ExtraAbilities.CloneRef(game:GetService("RunService")).Heartbeat:Wait()end
+ExtraAbilities.QuickWait = function()return ExtraAbilities.CloneRef(game:GetService("RunService")).Heartbeat:Wait()end
 
 ExtraAbilities.SmartWait = function(duration) 
     local previoustime = time()
@@ -155,6 +155,41 @@ ExtraAbilities.FindHirerachy = function(inst)
 	end 
 
 	return resultstr 
+end
+
+if ExtraAbilities.IsClient() then 
+ExtraAbilities.DebugCode = function(src)
+
+local returnstr = "SCRIPT EXECUTION FAILED"
+
+local result = {pcall(function()loadstring(src)()end)}
+
+local Leftover = ""
+
+local Icon
+
+if #result > 1 then
+    for i=2,#result do
+        pcall(function()Leftover = Leftover..tostring(result[i]).."\n"end)
+    end
+else
+    pcall(function()Leftover = "<none>"end)
+end
+
+if result[1] == false then
+    pcall(function()returnstr = "Failed to execute the script properly!"..Leftover end)
+	pcall(function()Icon="rbxassetid://5107154082"end)
+elseif result[1] == true then
+    pcall(function()returnstr = "Successfully executed the script without issues!" end)
+	pcall(function()Icon="rbxassetid://12817454402"end)
+else
+    pcall(function()returnstr = "Something went wrong while executing the script!" end)
+end
+
+ExtraAbilities.Message(returnstr.."\n"..Leftover)
+return ExtraAbilities.Notify(returnstr, Leftover, Icon)
+
+end 
 end
 
 return ExtraAbilities
