@@ -93,7 +93,7 @@ ExtraAbilities.WaitForSpecificDescendant = function(parent, data, argduration) -
                     catchedData = catchedData+1 
                 end 
             end 
-            if catchedData => dataAmount then 
+            if catchedData >= dataAmount then 
                 return instance 
             end 
         end 
@@ -121,7 +121,7 @@ ExtraAbilities.GetSpecificDescendants = function(parent, data) -- example: Extra
                 catchedData = catchedData+1 
             end 
         end 
-        if catchedData => dataAmount then 
+        if catchedData >= dataAmount then 
             table.insert(returningtable,instance)
         end 
     end 
