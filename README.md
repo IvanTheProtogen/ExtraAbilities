@@ -1,14 +1,17 @@
 ![ExtraAbilities](<https://github.com/IvanTheProtogen/ExtraAbilities/raw/main/ExtraAbilities.png>)
 
-# Hey!
+# [UNFINISHED]
 
-This repository isn't ready yet! Please wait a while!
+Welcome to the official documentation of ExtraAbilities, here you will learn how to use the ExtraAbilities module in your scripts.
 
-## Development Logs 
+# 1. Requiring the module.
 
+In order to require the ExtraAbilities module, we should use `local`, `loadstring()` and `game:HttpGet()`.
+
+```lua
+local ExtraAbilities = loadstring(game:HttpGet("http://github.com/IvanTheProtogen/ExtraAbilities/raw/main/main.lua"))();
 ```
-[Sunday, August 4, 2024. 2:04 AM (GMT+3:00)] Gonna playtest the ExtraAbilities module for a while.
-[Sunday, August 4, 2024. 2:36 AM (GMT+3:00)] Issue found, the :SetCore() must be at StarterGui, not PlayerGui.
-[Sunday, August 4, 2024. 3:34 AM (GMT+3:00)] Added more functions to the root dictionary table, playtesting.
-[Sunday, August 4, 2024. 3:45 AM (GMT+3:00)] Fixed the icon a bit...
-```
+
+Now, we've required the ExtraAbilities module, we have access to more functions, that we can use. Let's introduce the functions we now have.
+
+# 1.1. 
