@@ -1,7 +1,5 @@
 ![ExtraAbilities](<https://github.com/IvanTheProtogen/ExtraAbilities/raw/main/ExtraAbilities.png>)
 
-# [UNFINISHED]
-
 Welcome to the official documentation of ExtraAbilities, here you will learn how to use the ExtraAbilities module in your scripts.
 
 # 1. Requiring the module.
@@ -220,6 +218,19 @@ for i,v in pairs(ExtraAbilities.GetSpecificDescendants(game,properties)) do
 	v:Destroy()
 end
 ```
+
+## 3.8. DebugCode function. (EXPLOIT-ONLY)
+
+`ExtraAbilities.DebugCode()` shows the works of the specific script to the player. It tells if the script execution was successful and how long did it take for the script to finish the work.
+
+Example use:
+```lua
+ExtraAbilities.DebugCode([====[print("Hi!")wait(1)]===])
+```
+
+### 3.8.1. Development note.
+
+Planning to make `ExtraAbilities.DebugFunction()` extra-function.
 
 # 4. Credits 
 
