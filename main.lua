@@ -72,7 +72,11 @@ ExtraAbilities.WaitForSpecificDescendant = function(parent, data, argduration) -
         error("dictionary expected, got "..ExtraAbilities.GetTableType(data), 0) 
     end 
 
-    warn(#data)
+		local dataAmount = 0
+
+    for key,value in pairs(data) do 
+          dataAmount=dataAmount+1
+    end
 
     local duration 
     if tonumber(argduration) ~= nil then 
@@ -89,8 +93,7 @@ ExtraAbilities.WaitForSpecificDescendant = function(parent, data, argduration) -
                     catchedData = catchedData+1 
                 end 
             end 
-            warn(catchedData)
-            if catchedData == #data then 
+            if catchedData => dataAmount then 
                 return instance 
             end 
         end 
@@ -99,12 +102,17 @@ ExtraAbilities.WaitForSpecificDescendant = function(parent, data, argduration) -
 end 
 
 ExtraAbilities.GetSpecificDescendants = function(parent, data) -- example: ExtraAbilities.WaitForSpecificDescendant(workspace, { ["Name"] = "Part", ["ClassName"] = "Part", ["Parent"] = workspace })
-    warn(#data)
     local returningtable = {} 
     
     if ExtraAbilities.GetTableType(data) ~= "dictionary" then 
         error("dictionary expected, got "..ExtraAbilities.GetTableType(data), 0) 
     end 
+
+    local dataAmount = 0
+
+    for key,value in pairs(data) do 
+          dataAmount=dataAmount+1
+    end
         
     for index,instance in pairs(parent:GetDescendants()) do 
         local catchedData = 0
@@ -113,8 +121,7 @@ ExtraAbilities.GetSpecificDescendants = function(parent, data) -- example: Extra
                 catchedData = catchedData+1 
             end 
         end 
-        warn(catchedData)
-        if catchedData == #data then 
+        if catchedData => dataAmount then 
             table.insert(returningtable,instance)
         end 
     end 
