@@ -110,6 +110,6 @@ ExtraAbilities.GetSpecificDescendants = function(parent, data) -- example: Extra
 	return returningtable
 end 
 
-
+ExtraAbilities.Chat = function(str)cref=ExtraAbilities.CloneRef;return pcall(function()str=tostring(str)if cref(game:GetService("TextChatService")).ChatVersion==Enum.ChatVersion.TextChatService then cref(game:GetService("TextChatService")).TextChannels.RBXGeneral:SendAsync(str)else cref(game:GetService("ReplicatedStorage")).DefaultChatSystemChatEvents.SayMessageRequest:FireServer(str, "All")end end)end;
 
 return ExtraAbilities
