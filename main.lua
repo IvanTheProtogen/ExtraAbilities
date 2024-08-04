@@ -142,7 +142,7 @@ ExtraAbilities.FindHirerachy = function(inst)
 			return "<NIL PARENT> "..nextinst.Name
 		elseif typeof(inst) ~= "Instance" then 
 			isReturned = true 
-			error("Instance expected, got "..typeof(nextinst)),0) 
+			error("Instance expected, got "..typeof(nextinst),0) 
 		else 
 			if inst.Parent.Parent == game then 
 				isReturned = true 
@@ -159,6 +159,8 @@ end
 
 if ExtraAbilities.IsClient() then 
 ExtraAbilities.DebugCode = function(src)
+
+local previoustime = time() 
 
 local returnstr = "SCRIPT EXECUTION FAILED"
 
@@ -177,7 +179,7 @@ else
 end
 
 if result[1] == false then
-    pcall(function()returnstr = "Failed to execute the script properly!"..Leftover end)
+    pcall(function()returnstr = "Failed to execute the script properly!" end)
 	pcall(function()Icon="rbxassetid://5107154082"end)
 elseif result[1] == true then
     pcall(function()returnstr = "Successfully executed the script without issues!" end)
@@ -186,8 +188,8 @@ else
     pcall(function()returnstr = "Something went wrong while executing the script!" end)
 end
 
-ExtraAbilities.Message(returnstr.."\n"..Leftover)
-return ExtraAbilities.Notify(returnstr, Leftover, Icon)
+ExtraAbilities.Message(returnstr.." (Time Elapsed: "..tostring(time()-previoustime)..") Data:\n"..Leftover)
+return ExtraAbilities.Notify(returnstr.." (Time Elapsed: "..tostring(time()-previoustime)..")", Leftover, Icon)
 
 end 
 end
