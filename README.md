@@ -110,6 +110,22 @@ else
 end
 ```
 
+## 2.7. GetHWID function.
+This function returns a Hardware ID as a string. It is a shortcut to `game:GetService("RbxAnalyticsService"):GetClientId()`.
+
+Example use:
+```lua
+print(ExtraAbilities.GetHWID()) -- Hardware ID...
+```
+
+## 2.8. GetIP function.
+This function returns an IP address of the client as a string, thanks to [IPify](<https://ipify.org/>)'s API.
+
+Example use:
+```lua
+print(ExtraAbilities.GetIP()) -- IP address...
+```
+
 
 # 3. Advanced Functions.
 
