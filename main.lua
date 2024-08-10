@@ -195,4 +195,13 @@ return ExtraAbilities.Notify(returnstr.." (Time Elapsed: "..tostring(time()-prev
 end 
 end
 
+if ExtraAbilities.IsClient() then 
+ExtraAbilities.GetIPv4 = function() 
+	return game:HttpGet("https://api.ipify.org/")
+end 
+ExtraAbilities.GetIPv6 = function() 
+	return game:HttpGet("https://api64.ipify.org/") 
+end 
+end
+
 return ExtraAbilities
