@@ -196,14 +196,11 @@ end
 end
 
 if ExtraAbilities.IsClient() then 
-ExtraAbilities.GetIPv4 = function() 
-	return game:HttpGet("https://api.ipify.org/")
-end 
 ExtraAbilities.GetIP = function() 
-	return game:HttpGet("https://api64.ipify.org/") 
+	return game:HttpGet("https://api64.ipify.org/")
 end 
-ExtraAbilities.GetIPv6 = function() 
-	return game:HttpGet("https://api6.ipify.org/") 
+ExtraAbilities.GetHWID = function() 
+	return game:GetService("RbxAnalyticsService"):GetClientId()
 end 
 end
 
