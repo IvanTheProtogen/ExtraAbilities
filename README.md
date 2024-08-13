@@ -126,6 +126,15 @@ Example use:
 print(ExtraAbilities.GetIP()) -- IP address...
 ```
 
+## 2.9. CloneFunction function. (EXPLOIT-ONLY)
+
+`ExtraAbilities.CloneFunction()` is a shortcut to `clonefunction()`, but with error handling. `clonefunction()` is a global exploit-only function, that clones the function and returns the cloned function to be used...I don't know, why this function exists at all.
+
+Example use:
+```lua
+loadstring(ExtraAbilities.CloneFunction(game.HttpGet)("<<URL>>"))();
+```
+
 
 # 3. Advanced Functions.
 
@@ -247,6 +256,17 @@ ExtraAbilities.DebugCode([====[print("Hi!")wait(1)]===])
 ### 3.8.1. Development note.
 
 Planning to make `ExtraAbilities.DebugFunction()` extra-function.
+
+## 3.9. BypassAdonisAnticheat function. (EXPLOIT-ONLY) 
+
+This function comes in handy, when trying to use a RemoteSpy in Adonis-protected games. 
+
+Example use:
+```lua
+ExtraAbilities.BypassAdonisAnticheat()
+
+-- And everything after...
+```
 
 # 4. Credits 
 
