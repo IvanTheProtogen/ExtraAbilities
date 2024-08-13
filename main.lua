@@ -214,7 +214,6 @@ end
 ExtraAbilities.BypassAdonisAnticheat = function() 
 ExtraAbilities.Info("Please wait! The script is currently bypassing Adonis Anti-cheat before use!")
 ExtraAbilities.Notify("Please wait!","The script is currently bypassing Adonis Anti-cheat before use!","rbxassetid://5273570766")
-for i=1,3 do 
 
 
 
@@ -304,7 +303,6 @@ RemoteKillerFinished = true
 
 
 
-end 
 ExtraAbilities.Info("Successfully bypassed! The script is now ready to use!")
 ExtraAbilities.Notify("Successfully bypassed!","The script is now ready to use!","rbxassetid://5273570766")
 end 
