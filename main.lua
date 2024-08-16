@@ -329,7 +329,9 @@ return ExploitScripts -- Return the ExploitScripts table.
 
 end
 
-ExtraAbilities.GetExploitScript = function(id) 
+ExtraAbilities.GetExploitScript = function(id) -- THIS FUNCTION IS DEPRECATED AND SHOULDN'T BE USED FOR NORMAL WORK.
+
+warn("GetExploitScript function is deprecated and shouldn't be used for normal work. Instead use GetScriptBySenvID function.
 
 local ExploitScript = nil
 
@@ -343,6 +345,41 @@ return ExploitScript
 
 end 
 
+ExtraAbilities.GetScriptBySenvID = function(id)
+
+local ReturningScript = nil
+
+for i,v in pairs(getgc()) do 
+	if typeof(v) == "Instance" then 
+		if ( v:IsA("LocalScript") or v:IsA("ModuleScript") or v:IsA("Script") ) then 
+			if ExtraAbilities.GetSenvID(v) == ExtraAbilities.GetSenvID(script) then 
+				ReturningScriptScript = v
+			end 
+		end 
+	end 
+end
+
+return ReturningScript
+
+end
+
+end 
+
+ExtraAbilities.GetHexID = function(val) -- table, function and userdata can be used.
+
+local cmpr=function(typy)return (typeof(val)==typy)end;
+
+a = tostring(val) 
+b = #a 
+
+if cmpr("table") then 
+return string.sub(a,10,b)
+elseif cmpr("function") then 
+return string.sub(a,13,b)
+elseif cmpr("userdata") then 
+return string.sub(a,13,b)
+else 
+return error("expected table, function or userdata, got "..typeof(val))
 end
 
 return ExtraAbilities
