@@ -268,6 +268,37 @@ ExtraAbilities.BypassAdonisAnticheat()
 -- And everything after...
 ```
 
+## 3.10. GetSenvID function. (EXPLOIT-ONLY) 
+
+This function returns the ID of the script's environment. Useful, when comparing scripts with each other. 
+
+Example use:
+```lua
+print(ExtraAbilities.GetSenvID(script)) -- hex code...
+```
+
+## 3.11. GetExploitScripts function. (EXPLOIT-ONLY) 
+
+This function searches for and returns ExploitScripts in the game memory. This function is really powerful and you can make powerful scripts like ExploitSpys.
+
+Example use:
+```lua
+-- This example code stops all currently running ExploitScripts.
+
+for i,v in pairs(ExtraAbilities.GetExploitScripts()) do
+	v.Disabled = true
+end
+```
+
+## 3.12. GetExploitScript function. (EXPLOIT-ONLY) 
+
+This function searches for and returns the ExploitScript with the exact SenvID. Useful for ExploitSpys. 
+
+Example use:
+```lua
+ExtraAbilities.GetExploitScript(ExtraAbilities.GetSenvID(script)).Disabled = true -- This disables itself.
+```
+
 # 4. Credits 
 
 ExtraAbilities module and documentation are both made by IvanIzWorthless (AKA IvanTheProtogen).
@@ -278,3 +309,4 @@ http://create.roblox.com/docs/
 http://devforum.roblox.com/
 https://web.archive.org/web/20220924132612/https://x.synapse.to/docs/
 https://robloxapi.github.io/ref/
+https://forum.wearedevs.net/
