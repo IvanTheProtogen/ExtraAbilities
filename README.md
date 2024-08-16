@@ -314,6 +314,7 @@ ExtraAbilities.GetScriptBySenvID(ExtraAbilities.GetSenvID(script)).Disabled = tr
 
 This function returns an ID of the provided value. For now, the only currently supported values are table, function and userdata. 
 
+Example use:
 ```lua
 print(ExtraAbilities.GetValueID(print)) -- Value ID...
 ```
