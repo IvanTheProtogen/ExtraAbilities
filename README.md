@@ -11,7 +11,7 @@ v1.2 -- The Memory Search update: Part 1.
 ├ [ + ] Added GetExploitScripts function.
 └ [ + ] Added GetExploitScript function.
 v1.2.1 -- The Memory Search update: Part 2.
-├ [ x ] Deprecated GetExploitScript function.
+├ [ * ] Deprecated GetExploitScript function.
 ├ [ / ] Modified GetSenvID function.
 └ [ + ] Added GetScriptBySenvID function.
 v1.2.2 -- The Information update.
