@@ -380,6 +380,8 @@ elseif cmpr("userdata") then
 return string.sub(a,13,b)
 else 
 return error("expected table, function or userdata, got "..typeof(val))
+end 
+
 end
 
 return ExtraAbilities
