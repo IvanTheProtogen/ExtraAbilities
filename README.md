@@ -2,6 +2,23 @@
 
 Welcome to the official documentation of ExtraAbilities, here you will learn how to use the ExtraAbilities module in your scripts.
 
+Changelogs:
+```
+v1.0 -- The first release.
+v1.1 -- The Adonis Anti-cheat Bypass update.
+v1.2 -- The Memory Search update: Part 1.
+├ [ + ] Added GetSenvID function.
+├ [ + ] Added GetExploitScripts function.
+└ [ + ] Added GetExploitScript function.
+v1.2.1 -- The Memory Search update: Part 2.
+├ [ x ] Deprecated GetExploitScript function.
+├ [ / ] Modified GetSenvID function.
+└ [ + ] Added GetScriptBySenvID function.
+v1.2.2 -- The Information update.
+├ [ + ] Added GetVersion function.
+└ [ + ] Added changelogs.
+```
+
 # 1. Requiring the module.
 
 In order to require the ExtraAbilities module, we should use `local`, `loadstring()` and `game:HttpGet()`.
@@ -133,6 +150,14 @@ print(ExtraAbilities.GetIP()) -- IP address...
 Example use:
 ```lua
 loadstring(ExtraAbilities.CloneFunction(game.HttpGet)("<<URL>>"))();
+```
+
+## 2.10. GetVersion function.
+
+This function returns the current version of ExtraAbilities.
+
+```lua
+print(ExtraAbilities.GetVersion()) -- "1.2.2"
 ```
 
 
