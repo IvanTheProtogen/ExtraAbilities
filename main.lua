@@ -307,6 +307,47 @@ ExtraAbilities.Info("Successfully bypassed! The script is now ready to use!")
 ExtraAbilities.Notify("Successfully bypassed!","The script is now ready to use!","rbxassetid://5273570766")
 end 
 
+ExtraAbilities.GetSenvID = function(v) 
+	return string.sub(tostring(getsenv(v)),10,#tostring(getsenv(v)))
+end 
+
+ExtraAbilities.GetExploitScripts = function()
+
+local ExploitScripts = {} -- All ExploitScripts will be here.
+
+for i,v in pairs(getgc()) do -- Get everything from garbage collection. (Garbage Collection is the entire Lua world memory.)
+    if typeof(v) == "Instance" then -- Filter out everything, except Instances.
+        if v:IsA(script.ClassName) then -- Filter out all Instances, except ones with ExploitScript's true class.
+            if getscripthash(v) == getscripthash(script) then -- Filter out everything, except ones with the same script hash as current ExploitScript's script hash.
+                ExploitScripts[ExtraAbilities.GetSenvID(v)] = v -- Add the ExploitScript to the ExploitScripts table.
+            end
+        end
+    end
+end
+
+return ExploitScripts -- Return the ExploitScripts table.
+
+end
+
+ExtraAbilities.GetExploitScript = function(id) 
+
+local ExploitScript = nil
+
+for i,v in pairs(getgc()) do -- Get everything from garbage collection. (Garbage Collection is the entire Lua world memory.)
+    if typeof(v) == "Instance" then -- Filter out everything, except Instances.
+        if v:IsA(script.ClassName) then -- Filter out all Instances, except ones with ExploitScript's true class.
+            if getscripthash(v) == getscripthash(script) then -- Filter out everything, except ones with the same script hash as current ExploitScript's script hash.
+                if ExtraAbilities.GetSenvID(v) == ExtraAbilities.GetSenvID(script) then 
+			ExploitScript = v 
+		end 
+            end
+        end
+    end
+end
+
+return ExploitScript
+
+end 
 
 end
 
