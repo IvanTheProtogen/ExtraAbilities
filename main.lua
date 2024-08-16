@@ -365,7 +365,7 @@ end
 
 end 
 
-ExtraAbilities.GetHexID = function(val) -- table, function and userdata can be used.
+ExtraAbilities.GetValueID = function(val) -- table, function and userdata can be used.
 
 local cmpr=function(typy)return (typeof(val)==typy)end;
 
