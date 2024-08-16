@@ -351,7 +351,7 @@ local ReturningScript = nil
 
 for i,v in pairs(getgc()) do 
 	if typeof(v) == "Instance" then 
-		if ( v:IsA("LocalScript") or v:IsA("ModuleScript") or v:IsA("Script") ) then 
+		if ( v:IsA("LocalScript") or v:IsA("ModuleScript") ) then 
 			if ExtraAbilities.GetSenvID(v) == ExtraAbilities.GetSenvID(script) then 
 				ReturningScriptScript = v
 			end 
