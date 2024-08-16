@@ -1,6 +1,6 @@
 local ExtraAbilities = {}
 
-local AnticheatBypassed = false 
+ExtraAbilities.GetVersion = function()return"1.1.2"end
 
 ExtraAbilities.CloneRef = cloneref or function(...)return...end
 ExtraAbilities.CloneFunction = clonefunction or function(...)return...end
@@ -331,7 +331,7 @@ end
 
 ExtraAbilities.GetExploitScript = function(id) -- THIS FUNCTION IS DEPRECATED AND SHOULDN'T BE USED FOR NORMAL WORK.
 
-warn("GetExploitScript function is deprecated and shouldn't be used for normal work. Instead use GetScriptBySenvID function.
+warn("GetExploitScript function is deprecated and shouldn't be used for normal work. Instead use GetScriptBySenvID function.")
 
 local ExploitScript = nil
 
