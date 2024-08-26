@@ -143,7 +143,7 @@ ExtraAbilities.FindHirerachy = function(inst)
 	while not isReturned do 
 		if nextinst.Parent == nil then 
 			isReturned = true 
-			return "<NIL PARENT> "..nextinst.Name
+			return "<NIL PARENT> "..resultstr
 		elseif typeof(inst) ~= "Instance" then 
 			isReturned = true 
 			error("Instance expected, got "..typeof(nextinst),0) 
