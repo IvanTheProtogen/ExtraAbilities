@@ -350,7 +350,7 @@ Example use:
 print(ExtraAbilities.GetValueID(print)) -- Value ID...
 ```
 
-## 3.15. GetValueByID function. 
+## 3.15. GetValueByID function. (EXPLOIT-ONLY)
 
 This function is basically GetValueID, but reversed. It gets a specific table/function/userdata by provided ID from all memory. Returns `nil` if the value isn't found.
 
