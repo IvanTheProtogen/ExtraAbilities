@@ -19,6 +19,12 @@ v1.3 -- The Information update.
 └ [ + ] Added changelogs.
 v1.3.1 -- getgenv() mini-update.
 └ [ + ] Added a "getgenv" file.
+v1.4 -- The Memory Search update: Part 3.
+├ [ * ] Undeprecated GetExploitScript function.
+├ [ / ] Modified GetSenvID function.
+├ [ / ] Modified GetExploitScript function.
+├ [ / ] Modified GetScriptBySenvID function.
+└ [ + ] Added GetValueByID function.
 ```
 
 # 1. Requiring the module.
