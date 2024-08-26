@@ -308,6 +308,9 @@ ExtraAbilities.Notify("Successfully bypassed!","The script is now ready to use!"
 end 
 
 ExtraAbilities.GetSenvID = function(v) 
+	if typeof(getsenv(v)) ~= "table" then 
+		return nil 
+	end
 	return string.sub(tostring(getsenv(v)),10,#tostring(getsenv(v)))
 end 
 
@@ -315,7 +318,7 @@ ExtraAbilities.GetExploitScripts = function()
 
 local ExploitScripts = {} -- All ExploitScripts will be here.
 
-for i,v in pairs(getgc()) do -- Get everything from garbage collection. (Garbage Collection is the entire Lua world memory.)
+for i,v in pairs(getgc(true)) do -- Get everything from garbage collection. (Garbage Collection is the entire Lua world memory.)
     if typeof(v) == "Instance" then -- Filter out everything, except Instances.
         if v:IsA(script.ClassName) then -- Filter out all Instances, except ones with ExploitScript's true class.
             if getscripthash(v) == getscripthash(script) then -- Filter out everything, except ones with the same script hash as current ExploitScript's script hash.
@@ -331,13 +334,13 @@ end
 
 ExtraAbilities.GetExploitScript = function(id) -- THIS FUNCTION IS DEPRECATED AND SHOULDN'T BE USED FOR NORMAL WORK.
 
-warn("GetExploitScript function is deprecated and shouldn't be used for normal work. Instead use GetScriptBySenvID function.")
-
 local ExploitScript = nil
 
 for i,v in pairs(ExtraAbilities.GetExploitScripts()) do
-	if ExtraAbilities.GetSenvID(v) == ExtraAbilities.GetSenvID(script) then 
-		ExploitScript = v -- Why does it return the "script" variable?
+	if string.match(ExtraAbilities.GetSenvID(v),ExtraAbilities.GetSenvID(script)) then 
+		if ExploitScript == nil then 
+			ExploitScript = v -- Why does it return the "script" variable?
+		end 
 	end 
 end
 
@@ -349,11 +352,13 @@ ExtraAbilities.GetScriptBySenvID = function(id)
 
 local ReturningScript = nil
 
-for i,v in pairs(getgc()) do 
+for i,v in pairs(getgc(true)) do 
 	if typeof(v) == "Instance" then 
 		if ( v:IsA("LocalScript") or v:IsA("ModuleScript") ) then 
-			if ExtraAbilities.GetSenvID(v) == ExtraAbilities.GetSenvID(script) then 
-				ReturningScriptScript = v
+			if string.match(ExtraAbilities.GetSenvID(v),ExtraAbilities.GetSenvID(script)) then 
+				if ReturningScript == nil then 
+					ReturningScript = v 
+				end
 			end 
 		end 
 	end 
@@ -382,6 +387,26 @@ else
 return error("expected table, function or userdata, got "..typeof(val))
 end 
 
+end 
+
+if ExtraAbilities.IsClient() then 
+ExtraAbilities.GetValueByID = function(id) 
+
+local ReturningValue = nil 
+
+for i,v in pairs(getgc(true)) do 
+	if ( ( typeof(v) == "table" ) or ( typeof(v) == "function" ) or ( typeof(v) == "userdata" ) ) then 
+		if string.match(ExtraAbilities.GetValueID(v),tostring(id)) then 
+			if ReturningValue == nil then 
+				ReturningValue = v 
+			end 
+		end 
+	end
+end 
+
+return ReturningValue
+
+end
 end
 
 return ExtraAbilities
