@@ -323,9 +323,7 @@ for i,v in pairs(ExtraAbilities.GetExploitScripts()) do
 end
 ```
 
-## 3.12. [DEPRECATED] GetExploitScript function. (EXPLOIT-ONLY) 
-
-_This function is deprecated and shouldn't be used in normal work, GetScriptBySenvID function should be used instead._
+## 3.12. GetExploitScript function. (EXPLOIT-ONLY) 
 
 This function searches for and returns the ExploitScript with the exact SenvID. Useful for ExploitSpys. 
 
@@ -350,6 +348,15 @@ This function returns an ID of the provided value. For now, the only currently s
 Example use:
 ```lua
 print(ExtraAbilities.GetValueID(print)) -- Value ID...
+```
+
+## 3.15. GetValueByID function. 
+
+This function is basically GetValueID, but reversed. It gets a specific table/function/userdata by provided ID from all memory. Returns `nil` if the value isn't found.
+
+Example use:
+```lua
+ExtraAbilities.GetValueByID(ExtraAbilities.GetValue(print))("Hello World!") -- "Hello World!"
 ```
 
 # 4. Credits 
