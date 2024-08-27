@@ -48,15 +48,7 @@ v1.5 -- The Adonis Anti-cheat Bypass Update: Part 2.
 
 The Adonis Anti-cheat patched the bypass, I'm trying my best to bypass the anti-cheat.
 
-❌ Do not use this:
-```lua
-loadstring(game:HttpGet("http://github.com/IvanTheProtogen/ExtraAbilities/raw/main/main.lua"))().BypassAdonisAnticheat();
-```
-
-✅ Use this instead:
-```lua
-task.wait(5)loadstring(game:HttpGet("http://github.com/IvanTheProtogen/ExtraAbilities/raw/main/main.lua"))().BypassAdonisAnticheat()task.wait(5);
-```
+_(There is currently no backup against the patch.)_
 
 # 1. Requiring the module.
 
