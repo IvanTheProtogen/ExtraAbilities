@@ -40,7 +40,8 @@ v1.4 -- The Memory Search update: Part 3.
 ├ [ / ] Modified GetScriptBySenvID function.
 └ [ + ] Added GetValueByID function.
 v1.5 -- The Adonis Anti-cheat Bypass Update: Part 2.
-└ [ / ] Modified BypassAdonisAnticheat function.
+├ [ / ] Modified BypassAdonisAnticheat function.
+└ [ + ] Added SafeDestroy function.
 ```
 
 # 1. Requiring the module.
@@ -374,6 +375,15 @@ Example use:
 ```lua
 ExtraAbilities.GetValueByID(ExtraAbilities.GetValue(print))("Hello World!") -- "Hello World!"
 ```
+
+## 3.16. SafeDestroy function. (EXPLOIT-ONLY)
+
+This function destroys any Instance, without triggering a few RBXScriptSignals, such as `Instance.Destroying`, `Instance.Changed`, `Instance.AncestryChanged` and `Instance:GetPropertyChangedSignal("Parent")`. This is useful for bypassing anti-cheats.
+
+Example use:
+```lua
+Inst1:Destroy() -- Scripts notice the destruction.
+ExtraAbilities.SafeDestroy(Inst2) -- No script notices the destruction.
 
 # 4. Credits 
 
