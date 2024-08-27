@@ -211,7 +211,15 @@ end
 
 ExtraAbilities.SafeDestroy = function(v)local NeutralizeConnection = function(con)for a,b in pairs(getconnections(con))do b:Disable()end end; NeutralizeConnection(v.Destroying)NeutralizeConnection(v.Changed)NeutralizeConnection(v.AncestryChanged)NeutralizeConnection(v:GetPropertyChangedSignal("Parent"))v:Destroy()end;
 
-ExtraAbilities.BypassAdonisAnticheat = function()for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do if v:IsA("RemoteEvent")then if ((string.sub(v.Name,9,9)=="-")and(string.sub(v.Name,14,14)=="-")and(string.sub(v.Name,19,19)=="-")and(string.sub(v.Name,24,24)=="-"))then Instance.new("RemoteEvent",game:GetService("ReplicatedStorage")).Name=v.Name;ExtraAbilities.SafeDestroy(v)end end end end -- The older complex version was patched, so I'm using this version.
+ExtraAbilities.BypassAdonisAnticheat = function()for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do if v:IsA("RemoteEvent")then if ((string.sub(v.Name,9,9)=="-")and(string.sub(v.Name,14,14)=="-")and(string.sub(v.Name,19,19)=="-")and(string.sub(v.Name,24,24)=="-"))then Instance.new("RemoteEvent",game:GetService("ReplicatedStorage")).Name=v.Name;ExtraAbilities.SafeDestroy(v)end end end
+local oldnmc = nil 
+oldnmc = hookmetamethod(game:GetService("Players").LocalPlayer,"__namecall",newcclosure(function(...)
+	if ( ( not checkcaller() ) and ( getnamecallmethod() == "Kick" ) ) then 
+		while true do pcall(function()task.wait(tonumber("inf"))end)end return nil 
+	end 
+	return oldnmc(...) 
+end)) 
+end
 
 ExtraAbilities.GetSenvID = function(v) 
 	if typeof(getsenv(v)) ~= "table" then 
