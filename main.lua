@@ -1,6 +1,6 @@
 local ExtraAbilities = {}
 
-ExtraAbilities.GetVersion = function()return"1.4"end
+ExtraAbilities.GetVersion = function()return"1.5"end
 
 ExtraAbilities.CloneRef = cloneref or function(...)return...end
 ExtraAbilities.CloneFunction = clonefunction or function(...)return...end
@@ -211,101 +211,7 @@ end
 
 -- I'm so happy to finally release an Adonis Anti-cheat bypass to ExtraAbilities. :D 
 
-ExtraAbilities.BypassAdonisAnticheat = function() 
-ExtraAbilities.Info("Please wait! The script is currently bypassing Adonis Anti-cheat before use!")
-ExtraAbilities.Notify("Please wait!","The script is currently bypassing Adonis Anti-cheat before use!","rbxassetid://5273570766")
-
-
-
--- ADONIS ANTI-CHEAT DEACTIVATOR
--- By IvanIzWorthlessYT :D
-
--- Finally get to use RemoteSpy!
-
-local RemoteKillerFinished = false -- This is for Anti-Kick part.
-
--- Only this part of code is skidded from Infinite Yield's Anti-Kick command. The rest is coded by me from scratch.
-
--- I added anti-kick, because Adonis Anti-cheat detects namecallInstances.
-
-task.spawn(function()
-
-while not RemoteKillerFinished do
-task.wait(1) -- Wait until the Remote-killer finishes.
-end 
-
-local LocalPlayer = ExtraAbilities.CloneRef(game:GetService("Players")).LocalPlayer
-local oldhmmi
-local oldhmmnc
-oldhmmi = hookmetamethod(game, "__index", function(self, method)
-	if self == LocalPlayer and method:lower() == "kick" then
-		return error("Expected ':' not '.' calling member function Kick", 2)
-	end
-	return oldhmmi(self, method)
-end)
-end)
-
-oldhmmnc = hookmetamethod(game, "__namecall",function(self, ...)
-	if self == LocalPlayer and getnamecallmethod():lower() == "kick" then
-		return
-	end
-	return oldhmmnc(self, ...)
-end)
-
--- Check, if the RemoteEvent has a name of GUID.
-
-local function Check(inst,printresult)task.spawn(function()
-    if typeof(inst) == "Instance" then 
-        if inst:IsA("RemoteEvent") or inst:IsA("RemoteFunction") or inst:IsA("UnreliableRemoteEvent") then 
-            if ( ( string.sub(inst.Name,9,9) == "-" ) and ( string.sub(inst.Name,14,14) == "-" ) and ( string.sub(inst.Name,19,19) == "-" ) ) then
-                if printresult then
-                    print("An anti-cheat remote has been detected! Replacing it with a fake one...") -- Only if Adonis Anti-cheat doesn't use the remote in a Local Variable.
-                    print("Replacing functions of all connections to Destroying, AncestryChanged and Changed events of the remote with blank functions...") -- I've realized how smart this is.
-                end
-				local BlankFunc = function(...)return...end
-                for i,v in pairs(getconnections(inst.Destroying)) do
-					v.Function = BlankFunc
-				end
-                for i,v in pairs(getconnections(inst.Changed)) do
-					v.Function = BlankFunc
-				end
-                for i,v in pairs(getconnections(inst.AncestryChanged)) do
-					v.Function = BlankFunc
-				end
-                Instance.new(inst.ClassName,inst.Parent).Name = inst.Name -- Replace the remote with it's plushie.
-                inst:Destroy() -- Murder the remote.
-            end
-        end 
-    end 
-end)end
-
--- When testing, Adonis Anti-cheat regrabbed the remote, so I decided to do an anti-regrab.
-
-warn("AUTO-CHECK ALL SPAWNED INSTANCES ENABLED, SO THE ADONIS ANTI-CHEAT WOULDN'T REGRAB THE REMOTEEVENT...")
-
-game.DescendantAdded:Connect(function(inst)
-    Check(inst,false)
-end)
-
--- Get and check all instances from everything one-by-one
-
-warn("GETTING INSTANCES FROM THE ABYSS...")
-
-for i,v in pairs(getgc()) do -- From Garbage Collection and DataModel.
-    Check(v,true)
-end 
-
-for i,v in pairs(getnilinstances()) do -- From NIL parent.
-    Check(v,true)
-end 
-
-RemoteKillerFinished = true 
-
-
-
-ExtraAbilities.Info("Successfully bypassed! The script is now ready to use!")
-ExtraAbilities.Notify("Successfully bypassed!","The script is now ready to use!","rbxassetid://5273570766")
-end 
+ExtraAbilities.BypassAdonisAnticheat = function()for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do if v:IsA("RemoteEvent")then if ((string.sub(v.Name,9,9)=="-")and(string.sub(v.Name,14,14)=="-")and(string.sub(v.Name,19,19)=="-")and(string.sub(v.Name,24,24)=="-"))then v:Destroy()end end end end -- The older complex version was patched, so I'm using this version.
 
 ExtraAbilities.GetSenvID = function(v) 
 	if typeof(getsenv(v)) ~= "table" then 
