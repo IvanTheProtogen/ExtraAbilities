@@ -18,7 +18,8 @@ For functions, that are added in The Memory Search update, the `script` variable
 Changelogs:
 ```
 v1.0 -- The first release.
-v1.1 -- The Adonis Anti-cheat Bypass update.
+v1.1 -- The Adonis Anti-cheat Bypass Update: Part 1.
+└ [ + ] Added BypassAdonisAnticheat function.
 v1.2 -- The Memory Search update: Part 1.
 ├ [ + ] Added GetSenvID function.
 ├ [ + ] Added GetExploitScripts function.
@@ -38,6 +39,8 @@ v1.4 -- The Memory Search update: Part 3.
 ├ [ / ] Modified GetExploitScript function.
 ├ [ / ] Modified GetScriptBySenvID function.
 └ [ + ] Added GetValueByID function.
+v1.5 -- The Adonis Anti-cheat Bypass Update: Part 2.
+└ [ / ] Modified BypassAdonisAnticheat function.
 ```
 
 # 1. Requiring the module.
