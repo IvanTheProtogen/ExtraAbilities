@@ -42,6 +42,8 @@ v1.4 -- The Memory Search update: Part 3.
 v1.5 -- The Adonis Anti-cheat Bypass Update: Part 2.
 ├ [ / ] Modified BypassAdonisAnticheat function.
 └ [ + ] Added SafeDestroy function.
+v1.6 -- The Memory Search update: Part 4.
+└ [ + ] Added GetInstanceByDebugID function.
 ```
 
 # 0. ANNOUNCEMENT (08/27/2024) 
@@ -390,6 +392,15 @@ Example use:
 ```lua
 Inst1:Destroy() -- Scripts notice the destruction.
 ExtraAbilities.SafeDestroy(Inst2) -- No script notices the destruction.
+
+## 3.17. GetInstanceByDebugID function. (EXPLOIT-ONLY)
+
+This function returns an Instance with the exact debug ID, the Instance's debug ID can be retrieved via `Instance.GetDebugId` method.
+
+Example use:
+```lua
+print(ExtraAbilities.GetInstanceByDebugID(script:GetDebugId())) -- Script
+```
 
 # 4. Credits 
 
