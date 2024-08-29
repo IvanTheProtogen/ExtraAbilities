@@ -314,7 +314,7 @@ return ReturningValue
 
 end 
 
-ExtraAbilities.GetInstanceByDebugId = function(id) 
+ExtraAbilities.GetInstanceByDebugID = function(id) 
 	for i,v in pairs(getgc(true)) do 
 		if typeof(v) == "Instance" then 
 			if v:GetDebugId() == id then 
