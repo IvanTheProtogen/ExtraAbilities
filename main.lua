@@ -312,7 +312,18 @@ end
 
 return ReturningValue
 
-end
-end
+end 
+
+ExtraAbilities.GetInstanceByDebugId = function(id) 
+	for i,v in pairs(getgc(true)) do 
+		if typeof(v) == "Instance" then 
+			if v:GetDebugId() == id then 
+				return v 
+			end 
+		end 
+	end 
+	return nil 
+end 
+end 
 
 return ExtraAbilities
