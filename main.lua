@@ -356,8 +356,28 @@ ExtraAbilities.FindPlayerByName = function(name)
 end 
 
 ExtraAbilities.GetSecurityCapabilities = function()
-	print("GetSecurityCapabilities is soon!")
-	return {} 
+	-- The reason why RobloxPlace isn't there, it's because this capability no longer exists. (TestLocalUser doesn't exist too!)
+	-- None isn't added, because it's a default capability, granted to all scripts. No script would be able to perform without None capability.
+	
+	-- Plugin -- game:GetService("CoreGui")
+	-- LocalUser -- game:GetService("VersionControlService")
+	-- RobloxScript -- game:GetService("CorePackages")
+	-- RobloxEngine -- game:GetService("PlaceStatsService")
+
+	-- WritePlayer -- Instance.new("Player")
+	-- NotAccessible -- game:GetService("Chat").LoadDefaultChat = game:GetService("Chat").LoadDefaultChat 
+
+	local capabilities = {}
+
+	if pcall(function()game:GetService("CoreGui")end) then table.insert(capabilities, "Plugin")end; -- Plugin 
+	if pcall(function()game:GetService("VersionControlService")end) then table.insert(capabilities, "LocalUser")end; -- LocalUser 
+	if pcall(function()game:GetService("CorePackages")end) then table.insert(capabilities, "RobloxScript")end; -- RobloxScript
+	if pcall(function()game:GetService("PlaceStatsService")end) then table.insert(capabilities, "RobloxEngine")end; -- RobloxEngine
+
+	if pcall(function()Instance.new("Player")end) then table.insert(capabilities, "WritePlayer")end; -- WritePlayer
+	if pcall(function()game:GetService("Chat").LoadDefaultChat = game:GetService("Chat").LoadDefaultChat end) then table.insert(capabilities, "NotAccessible")end; -- NotAccessible 
+
+	return capabilities
 end
 
 return ExtraAbilities
