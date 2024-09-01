@@ -48,6 +48,8 @@ v1.7 -- "A bit of extra-sauce" update: Part 1.
 ├ [ + ] Added GetThreadIdentity function.
 ├ [ + ] Added FindPlayerByName function.
 └ [ ! ] GetSecurityCapabilities function is soon!
+v1.8 -- "A bit of extra-sauce" update: Part 2.
+└ [ + ] Added GetSecurityCapabilities function.
 ```
 
 # 1. Requiring the module.
@@ -200,6 +202,8 @@ Example use:
 ```lua
 print(ExtraAbilities.GetThreadIdentity()) -- Thread Identity...
 ```
+
+_Information about Thread Identities can be seen [here](https://roblox.fandom.com/wiki/Security_context)._
 
 # 3. Advanced Functions.
 
