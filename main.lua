@@ -326,4 +326,38 @@ ExtraAbilities.GetInstanceByDebugID = function(id)
 end 
 end 
 
+ExtraAbilities.GetThreadIdentity = function()
+	local threadidentity = 0
+	local con = nil
+	con = game:GetService("LogService").MessageOut:Connect(function(msg)
+		if string.sub(msg,1,20) == "Current identity is " then
+			threadidentity = tonumber(string.sub(msg,21,#msg))
+			con:Disconnect()
+		end
+	end)
+	printidentity()
+	wait()
+	return threadidentity 
+end 
+
+ExtraAbilities.FindPlayerByName = function(name)
+	local plrs = game:GetService("Players")
+	local namee = string.lower(name)
+	for i,v in pairs(plrs:GetPlayers()) do 
+		if string.lower(string.sub(v.DisplayName,1,#name)) == namee then 
+			return v
+		elseif string.lower(string.sub(v.Name,1,#name)) == namee then 
+			return v 
+		elseif string.lower(tostring(v.UserId)) == namee then 
+			return v 
+		end
+	end 
+	return nil 
+end 
+
+ExtraAbilities.GetSecurityCapabilities = function()
+	print("GetSecurityCapabilities is soon!")
+	return {} 
+end
+
 return ExtraAbilities
