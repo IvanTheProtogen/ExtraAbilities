@@ -418,6 +418,29 @@ Example use:
 print(ExtraAbilities.FindPlayerByName(game:GetService("Players").LocalPlayer.DisplayName)) -- Display Name...
 ```
 
+## 3.18. GetSecurityCapabilities function.
+
+This function returns all security capabilities, that the script has. Really useful, when trying to find out the capabilities of an ExploitScript.
+
+Example use:
+```lua
+assert(table.find(ExtraAbilities.GetSecurityCapabilities(), "RobloxScript") ~= nil, "Incompatible exploit! (Lacking capability RobloxScript)");
+```
+
+Returned array:
+```
+{
+	"Plugin",
+	"LocalUser",
+	"RobloxScript",
+	"RobloxEngine",
+	"WritePlayer",
+	"NotAccessible"
+}
+```
+
+_Information about Security Capabilities can be seen [here](https://roblox.fandom.com/wiki/Security_context)._
+
 # 4. Credits 
 
 ExtraAbilities module and documentation are both made by IvanIzWorthless (AKA IvanTheProtogen).
