@@ -44,13 +44,11 @@ v1.5 -- The Adonis Anti-cheat Bypass Update: Part 2.
 └ [ + ] Added SafeDestroy function.
 v1.6 -- The Memory Search update: Part 4.
 └ [ + ] Added GetInstanceByDebugID function.
+v1.7 -- "A bit of extra-sauce" update: Part 1.
+├ [ + ] Added GetThreadIdentity function.
+├ [ + ] Added FindPlayerByName function.
+└ [ ! ] GetSecurityCapabilities function is soon!
 ```
-
-# 0. ANNOUNCEMENT (08/27/2024) 
-
-The Adonis Anti-cheat patched the bypass, I'm trying my best to bypass the anti-cheat.
-
-_(There is currently no backup against the patch.)_
 
 # 1. Requiring the module.
 
@@ -189,10 +187,19 @@ loadstring(ExtraAbilities.CloneFunction(game.HttpGet)("<<URL>>"))();
 
 This function returns the current version of ExtraAbilities.
 
+Example use:
 ```lua
 print(ExtraAbilities.GetVersion()) -- "1.2.2"
 ```
 
+## 2.11. GetThreadIdentity function.
+
+This function returns the exact thread identity of a current script, using both `printidentity()` and `game:GetService("LogService").MessageOut`.
+
+Example use:
+```lua
+print(ExtraAbilities.GetThreadIdentity()) -- Thread Identity...
+```
 
 # 3. Advanced Functions.
 
@@ -400,6 +407,15 @@ This function returns an Instance with the exact debug ID, the Instance's debug 
 Example use:
 ```lua
 print(ExtraAbilities.GetInstanceByDebugID(script:GetDebugId())) -- Script
+```
+
+## 3.17. FindPlayerByName function.
+
+This function returns a player by Display Name, Username or User ID, even if shortened. Returns `nil`, if player wasn't found.
+
+Example use:
+```lua
+print(ExtraAbilities.FindPlayerByName(game:GetService("Players").LocalPlayer.DisplayName)) -- Display Name...
 ```
 
 # 4. Credits 
