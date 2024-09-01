@@ -369,13 +369,13 @@ ExtraAbilities.GetSecurityCapabilities = function()
 
 	local capabilities = {}
 
-	if pcall(function()return game:GetService("CoreGui")end) then table.insert(capabilities, "Plugin")end; -- Plugin 
-	if pcall(function()return game:GetService("VersionControlService")end) then table.insert(capabilities, "LocalUser")end; -- LocalUser 
-	if pcall(function()return game:GetService("CorePackages")end) then table.insert(capabilities, "RobloxScript")end; -- RobloxScript
-	if pcall(function()return game:GetService("PlaceStatsService")end) then table.insert(capabilities, "RobloxEngine")end; -- RobloxEngine
+	if pcall(function()print(game:GetService("CoreGui"))end) then table.insert(capabilities, "Plugin")end; -- Plugin 
+	if pcall(function()print(game:GetService("VersionControlService"))end) then table.insert(capabilities, "LocalUser")end; -- LocalUser 
+	if pcall(function()print(game:GetService("CorePackages"))end) then table.insert(capabilities, "RobloxScript")end; -- RobloxScript
+	if pcall(function()print(game:GetService("PlaceStatsService"))end) then table.insert(capabilities, "RobloxEngine")end; -- RobloxEngine
 
-	if pcall(function()return Instance.new("Player")end) then table.insert(capabilities, "WritePlayer")end; -- WritePlayer
-	if pcall(function()game:GetService("Chat").LoadDefaultChat = game:GetService("Chat").LoadDefaultChat end) then table.insert(capabilities, "NotAccessible")end; -- NotAccessible 
+	if pcall(function()Instance.new("Player")end) then table.insert(capabilities, "WritePlayer")end; -- WritePlayer
+	if pcall(function()game:GetService("Chat").LoadDefaultChat=game:GetService("Chat").LoadDefaultChat end) then table.insert(capabilities, "NotAccessible")end; -- NotAccessible 
 
 	return capabilities
 end
