@@ -1,6 +1,6 @@
 local ExtraAbilities = {}
 
-ExtraAbilities.GetVersion = function()return"1.7"end
+ExtraAbilities.GetVersion = function()return"1.8"end
 
 ExtraAbilities.CloneRef = cloneref or function(...)return...end
 ExtraAbilities.CloneFunction = clonefunction or function(...)return...end
