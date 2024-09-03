@@ -228,49 +228,15 @@ for i,v in pairs(getgc(true)) do -- Get everything from garbage collection. (Gar
     if typeof(v) == "Instance" then -- Filter out everything, except Instances.
         if v:IsA(script.ClassName) then -- Filter out all Instances, except ones with ExploitScript's true class.
             if getscripthash(v) == getscripthash(script) then -- Filter out everything, except ones with the same script hash as current ExploitScript's script hash.
-                ExploitScripts[ExtraAbilities.GetSenvID(v)] = v -- Add the ExploitScript to the ExploitScripts table.
+		if getsenv(v).getsenv == getsenv(script).getsenv then -- Make sure, that the script has getsenv function.
+                	ExploitScripts[v:GetDebugId()] = v -- Add the ExploitScript to the ExploitScripts table. 
+		end
             end
         end
     end
 end
 
 return ExploitScripts -- Return the ExploitScripts table.
-
-end
-
-ExtraAbilities.GetExploitScript = function(id) -- THIS FUNCTION IS DEPRECATED AND SHOULDN'T BE USED FOR NORMAL WORK.
-
-local ExploitScript = nil
-
-for i,v in pairs(ExtraAbilities.GetExploitScripts()) do
-	if string.match(ExtraAbilities.GetSenvID(v),ExtraAbilities.GetSenvID(script)) then 
-		if ExploitScript == nil then 
-			ExploitScript = v -- Why does it return the "script" variable?
-		end 
-	end 
-end
-
-return ExploitScript
-
-end 
-
-ExtraAbilities.GetScriptBySenvID = function(id)
-
-local ReturningScript = nil
-
-for i,v in pairs(getgc(true)) do 
-	if typeof(v) == "Instance" then 
-		if ( v:IsA("LocalScript") or v:IsA("ModuleScript") ) then 
-			if string.match(ExtraAbilities.GetSenvID(v),ExtraAbilities.GetSenvID(script)) then 
-				if ReturningScript == nil then 
-					ReturningScript = v 
-				end
-			end 
-		end 
-	end 
-end
-
-return ReturningScript
 
 end
 
