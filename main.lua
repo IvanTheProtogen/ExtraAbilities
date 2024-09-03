@@ -228,11 +228,7 @@ for i,v in pairs(getgc(true)) do -- Get everything from garbage collection. (Gar
     if typeof(v) == "Instance" then -- Filter out everything, except Instances.
         if v:IsA(script.ClassName) then -- Filter out all Instances, except ones with ExploitScript's true class.
             if getscripthash(v) == getscripthash(script) then -- Filter out everything, except ones with the same script hash as current ExploitScript's script hash.
-		pcall(function()
-			if getsenv(v).getsenv == getsenv(script).getsenv then -- Make sure, that the script has getsenv function.
-                		ExploitScripts[v:GetDebugId()] = v -- Add the ExploitScript to the ExploitScripts table. 
-			end 
-		end)
+	    	ExploitScripts[v:GetDebugId()] = v -- Add the ExploitScript to the ExploitScripts table. 
             end
         end
     end
