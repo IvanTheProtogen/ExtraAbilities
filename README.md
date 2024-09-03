@@ -50,6 +50,10 @@ v1.7 -- "A bit of extra-sauce" update: Part 1.
 └ [ ! ] GetSecurityCapabilities function is soon!
 v1.8 -- "A bit of extra-sauce" update: Part 2.
 └ [ + ] Added GetSecurityCapabilities function.
+v1.9 -- The "New Shape" update: Part 1.
+├ [ - ] Removed GetExploitScript function.
+├ [ - ] Removed GetScriptBySenvID function.
+└ [ / ] Modified GetExploitScripts function.
 ```
 
 # 1. Requiring the module.
@@ -337,7 +341,9 @@ ExtraAbilities.BypassAdonisAnticheat()
 -- And everything after...
 ```
 
-## 3.10. GetSenvID function. (EXPLOIT-ONLY) 
+## 3.10. GetSenvID function. (EXPLOIT-ONLY) [ABOUT TO BE REMOVED]
+
+_(This function is about to removed sooner or later. If your script is using this function, please reshape your script and remove the function from it or use a commit.)_
 
 This function returns the ID of the script's environment. Useful, when comparing scripts with each other. 
 
@@ -346,9 +352,20 @@ Example use:
 print(ExtraAbilities.GetSenvID(script)) -- hex code...
 ```
 
-## 3.11. GetExploitScripts function. (EXPLOIT-ONLY) 
+## 3.11. GetExploitScripts function. (EXPLOIT-ONLY) [RESHAPED]
+
+_(This function has been reshaped and most scripts using this function may break, if not updated. If your script is using this function, please reshape your own script for the new function.)_
 
 This function searches for and returns ExploitScripts in the game memory. This function is really powerful and you can make powerful scripts like ExploitSpys.
+
+Returned dictionary:
+```
+{
+	["0_123987"] = Script,
+	["0_123123"] = Script,
+	...
+}
+```
 
 Example use:
 ```lua
@@ -359,7 +376,9 @@ for i,v in pairs(ExtraAbilities.GetExploitScripts()) do
 end
 ```
 
-## 3.12. GetExploitScript function. (EXPLOIT-ONLY) 
+## 3.12. GetExploitScript function. (EXPLOIT-ONLY) [REMOVED]
+
+_(This function has been removed, due to it's unstability and lack of worth. You may use a commit, but it would be unstable. Use the GetInstanceByDebugID function instead.)_ 
 
 This function searches for and returns the ExploitScript with the exact SenvID. Useful for ExploitSpys. 
 
@@ -368,7 +387,9 @@ Example use:
 ExtraAbilities.GetExploitScript(ExtraAbilities.GetSenvID(script)).Disabled = true -- This disables itself.
 ```
 
-## 3.13. GetScriptBySenvID function. (EXPLOIT-ONLY) 
+## 3.13. GetScriptBySenvID function. (EXPLOIT-ONLY) [REMOVED]
+
+_(This function has been removed, due to it's unstability and lack of worth. You may use a commit, but it would be unstable. Use the GetInstanceByDebugID function instead.)_ 
 
 This function searches for and returns the script with the exact SenvID. Useful for ExploitSpys and ScriptSpys. 
 
