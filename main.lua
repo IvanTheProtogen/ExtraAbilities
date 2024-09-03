@@ -224,15 +224,11 @@ ExtraAbilities.GetExploitScripts = function()
 
 local ExploitScripts = {} -- All ExploitScripts will be here.
 
-for i,v in pairs(getgc(true)) do -- Get everything from garbage collection. (Garbage Collection is the entire Lua world memory.)
-    if typeof(v) == "Instance" then -- Filter out everything, except Instances.
-        if v:IsA(script.ClassName) then -- Filter out all Instances, except ones with ExploitScript's true class.
-            if getscripthash(v) == getscripthash(script) then -- Filter out everything, except ones with the same script hash as current ExploitScript's script hash.
-	    	ExploitScripts[v:GetDebugId()] = v -- Add the ExploitScript to the ExploitScripts table. 
-            end
-        end
-    end
-end
+for i,v in pairs(getscripts()) do 
+	if getscripthash(v) == getscripthash(script) then 
+		ExploitScripts[tostring(v:GetDebugId())] = v 
+	end 
+end 
 
 return ExploitScripts -- Return the ExploitScripts table.
 
