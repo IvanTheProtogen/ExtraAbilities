@@ -12,6 +12,7 @@ getconnections
 hookmetamethod
 getscripthash
 getscripts
+getinstances
 ```
 
 For functions, that are added in The Memory Search update, the `script` variable should not be fake. The fake `script` variables are stated in [Official Synapse X Documentation's Page 3.1](<https://web.archive.org/web/20220826150114/https://x.synapse.to/docs/development/script_env.html>).
