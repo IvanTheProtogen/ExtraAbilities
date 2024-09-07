@@ -468,6 +468,24 @@ Returned array:
 
 _Information about Security Capabilities can be seen [here](https://roblox.fandom.com/wiki/Security_context)._
 
+## 3.19. FilterTableItems function.
+
+This function is good for excluding items, already present in one table.
+
+```lua
+<table(array)> ExtraAbilities.FilterTableItems(<table(array): tblA>, <table(array): tblB>)
+```
+
+```
+tblA -- Table to be filtered.
+tblB -- List of items needed to remove from tblA.
+```
+
+Example use:
+```lua
+print(ExtraAbilities.FilterTableItems({1,2,3},{1,2})) -- {3}
+```
+
 # 4. Credits 
 
 ExtraAbilities module and documentation are both made by IvanIzWorthless (AKA IvanTheProtogen).
