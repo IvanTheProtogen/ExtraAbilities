@@ -1,6 +1,6 @@
 local ExtraAbilities = {}
 
-ExtraAbilities.GetVersion = function()return"1.9"end
+ExtraAbilities.GetVersion = function()return"1.10"end
 
 ExtraAbilities.CloneRef = cloneref or function(...)return...end
 ExtraAbilities.CloneFunction = clonefunction or function(...)return...end
@@ -336,6 +336,19 @@ ExtraAbilities.GetSecurityCapabilities = function()
 	if pcall(function()game:GetService("Chat").LoadDefaultChat=game:GetService("Chat").LoadDefaultChat end) then table.insert(capabilities, "NotAccessible")end; -- NotAccessible 
 
 	return capabilities
-end
+end 
+
+ExtraAbilities.FilterTableItems = function(tblA,tblB)
+	-- tblA = Table to be filtered.
+	-- tblB = List of items needed to remove.
+
+	local tblC = {}
+	for i,v in next,tblA do 
+		if not table.find(tblB,v) then 
+			table.insert(tblC,v) 
+		end 
+	end 
+	return tblC 
+end 
 
 return ExtraAbilities
