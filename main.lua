@@ -213,13 +213,6 @@ ExtraAbilities.SafeDestroy = function(v)local NeutralizeConnection = function(co
 
 ExtraAbilities.BypassAdonisAnticheat = function()for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do if v:IsA("RemoteEvent")then if ((string.sub(v.Name,9,9)=="-")and(string.sub(v.Name,14,14)=="-")and(string.sub(v.Name,19,19)=="-")and(string.sub(v.Name,24,24)=="-"))then Instance.new("RemoteEvent",game:GetService("ReplicatedStorage")).Name=v.Name;ExtraAbilities.SafeDestroy(v)end end end end
 
-ExtraAbilities.GetSenvID = function(v) 
-	if typeof(getsenv(v)) ~= "table" then 
-		return nil 
-	end
-	return string.sub(tostring(getsenv(v)),10,#tostring(getsenv(v)))
-end 
-
 ExtraAbilities.GetExploitScripts = function()
 
 local ExploitScripts = {} -- All ExploitScripts will be here.
@@ -349,6 +342,16 @@ ExtraAbilities.FilterTableItems = function(tblA,tblB)
 		end 
 	end 
 	return tblC 
+end 
+
+ExtraAbilities.CleanupTable = function(tbl)
+	local tbll = {}
+	for i,v in next,tbl do 
+		if not table.find(tbll,v) then 
+			table.insert(tbll,v)
+		end 
+	end 
+	return tbll 
 end 
 
 return ExtraAbilities
