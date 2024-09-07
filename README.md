@@ -56,6 +56,10 @@ v1.9 -- The "New Shape" update: Part 1.
 ├ [ - ] Removed GetExploitScript function.
 ├ [ - ] Removed GetScriptBySenvID function.
 └ [ / ] Modified GetExploitScripts function.
+v1.10 -- "A bit of extra-sauce" update: Part 3.
+├ [ + ] Added FilterTableItems function.
+├ [ + ] Added CleanupTable function.
+└ [ - ] Removed GetSenvID function.
 ```
 
 # 1. Requiring the module.
@@ -343,9 +347,9 @@ ExtraAbilities.BypassAdonisAnticheat()
 -- And everything after...
 ```
 
-## 3.10. GetSenvID function. (EXPLOIT-ONLY) [ABOUT TO BE REMOVED]
+## 3.10. GetSenvID function. (EXPLOIT-ONLY) [REMOVED]
 
-_(This function is about to removed sooner or later. If your script is using this function, please reshape your script and remove the function from it or use a commit.)_
+_(This function has been removed, due to it's unstability and lack of worth. You may use a commit, but it would be unstable. Use the GetValueID and getsenv functions instead.)_ 
 
 This function returns the ID of the script's environment. Useful, when comparing scripts with each other. 
 
@@ -470,7 +474,7 @@ _Information about Security Capabilities can be seen [here](https://roblox.fando
 
 ## 3.19. FilterTableItems function.
 
-This function is good for excluding items, already present in one table.
+This function is good for excluding items, already present in one table. Returns the table with items not present in tblA, other than tblB.
 
 ```lua
 <table(array)> ExtraAbilities.FilterTableItems(<table(array): tblA>, <table(array): tblB>)
@@ -484,6 +488,15 @@ tblB -- List of items needed to remove from tblA.
 Example use:
 ```lua
 print(ExtraAbilities.FilterTableItems({1,2,3},{1,2})) -- {3}
+```
+
+## 3.20. CleanupTable function.
+
+This function cleans up the table from item duplicates. Returns a cleaned-up table.
+
+Example use:
+```lua
+print(ExtraAbilities.CleanupTable({1,2,3,3,3,3})) -- {1,2,3}
 ```
 
 # 4. Credits 
