@@ -354,7 +354,7 @@ ExtraAbilities.CleanupTable = function(tbl)
 	return tbll 
 end 
 
-ExtraAbilities.UncoverTable = function(tbl)
+ExtraAbilities.UncoverTable = function(tbl,maxloops)
 	local function HasTable(tbll)
 		for i,v in tbll do 
 		if typeof(v) == "table" then 
@@ -365,7 +365,9 @@ ExtraAbilities.UncoverTable = function(tbl)
 	end 
 	local tblll = tbl
 	local isfinished = false 
+	local doneloops = 0
 	while not isfinished do 
+		doneloops = doneloops + 1
 		if HasTable(tblll) then 
 			local tbllll = {}
 			for i,v in tblll do 
@@ -379,6 +381,9 @@ ExtraAbilities.UncoverTable = function(tbl)
 			end 
 			tblll = tbllll 
 		else 
+			isfinished = true 
+		end 
+		if doneloops >= maxloops then 
 			isfinished = true 
 		end 
 	end 
