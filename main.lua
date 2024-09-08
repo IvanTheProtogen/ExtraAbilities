@@ -1,6 +1,6 @@
 local ExtraAbilities = {}
 
-ExtraAbilities.GetVersion = function()return"1.10"end
+ExtraAbilities.GetVersion = function()return"1.11"end
 
 ExtraAbilities.CloneRef = cloneref or function(...)return...end
 ExtraAbilities.CloneFunction = clonefunction or function(...)return...end
@@ -353,5 +353,36 @@ ExtraAbilities.CleanupTable = function(tbl)
 	end 
 	return tbll 
 end 
+
+ExtraAbilities.UncoverTable = function(tbl)
+	local function HasTable(tbll)
+		for i,v in tbll do 
+		if typeof(v) == "table" then 
+				return true
+			end 
+		end 
+		return false
+	end 
+	local tblll = tbl
+	local isfinished = false 
+	while not isfinished do 
+		if HasTable(tblll) then 
+			local tbllll = {}
+			for i,v in tblll do 
+				if typeof(v) == "table" then 
+					for x,y in v do 
+						table.insert(tbllll,y)
+					end 
+				else 
+				    table.insert(tbllll,v)
+				end 
+			end 
+			tblll = tbllll 
+		else 
+			isfinished = true 
+		end 
+	end 
+	return ExtraAbilities.CleanupTable(tblll)
+end
 
 return ExtraAbilities
