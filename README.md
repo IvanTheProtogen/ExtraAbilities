@@ -60,6 +60,8 @@ v1.10 -- "A bit of extra-sauce" update: Part 3.
 ├ [ + ] Added FilterTableItems function.
 ├ [ + ] Added CleanupTable function.
 └ [ - ] Removed GetSenvID function.
+v1.11 -- "A bit of extra-sauce" update: Part 4.
+└ [ + ] Added UncoverTable function.
 ```
 
 # 1. Requiring the module.
@@ -498,6 +500,45 @@ Example use:
 ```lua
 print(ExtraAbilities.CleanupTable({1,2,3,3,3,3})) -- {1,2,3}
 ```
+
+## 3.21. UncoverTable function.
+
+This function unpacks all tables in one table, until no table is left. Also cleans up the table from duplicates. Returns the uncovered and clean table.
+
+```
+Before UncoverTable():
+
+{
+	1,
+	{
+		2,
+		{
+			3
+		}
+	}
+}
+
+After UncoverTable():
+
+{
+	1,
+	2,
+	3
+}
+```
+
+Example use:
+
+```lua
+local extbl = {
+	{1},
+	{2},
+	{3}
+}
+
+print(ExtraAbilities.UncoverTable(extbl)) -- {1, 2, 3}
+```
+
 
 # 4. Credits 
 
