@@ -365,7 +365,13 @@ ExtraAbilities.UncoverTable = function(tbl,maxloops)
 	end 
 	local tblll = tbl
 	local isfinished = false 
-	local doneloops = 0
+	local doneloops = 0 
+	if typeof(maxloops) ~= "number" then 
+		maxloops = 100 
+	end 
+	if maxloops > 100 then 
+		warn("[ ExtraAbilities ] Setting the maximum loop amount to above 100 may cause lag spikes and game freezing, careful!")
+	end
 	while not isfinished do 
 		doneloops = doneloops + 1
 		if HasTable(tblll) then 
