@@ -505,6 +505,12 @@ print(ExtraAbilities.CleanupTable({1,2,3,3,3,3})) -- {1,2,3}
 
 This function unpacks all tables in one table, until no table is left. Also cleans up the table from duplicates. Returns the uncovered and clean table.
 
+If it looped given times enough, it finishes.
+
+```lua
+<table(array)> ExtraAbilities.UncoverTable(<TableToUncover: table(any)>, <MaximumLoopsThroughTable: number>)
+```
+
 ```
 Before UncoverTable():
 
@@ -536,7 +542,7 @@ local extbl = {
 	{3}
 }
 
-print(ExtraAbilities.UncoverTable(extbl)) -- {1, 2, 3}
+print(ExtraAbilities.UncoverTable(extbl,10)) -- {1, 2, 3}
 ```
 
 
