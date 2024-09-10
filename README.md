@@ -62,6 +62,8 @@ v1.10 -- "A bit of extra-sauce" update: Part 3.
 └ [ - ] Removed GetSenvID function.
 v1.11 -- "A bit of extra-sauce" update: Part 4.
 └ [ + ] Added UncoverTable function.
+v1.12 -- "A bit of extra-sauce" update: Part 5.
+└ [ + ] Added FindPlayersAdvanced function.
 ```
 
 # 1. Requiring the module.
@@ -545,6 +547,24 @@ local extbl = {
 print(ExtraAbilities.UncoverTable(extbl,10)) -- {1, 2, 3}
 ```
 
+## 3.22. FindPlayersAdvanced function. (CLIENT-ONLY)
+
+This function returns a table with players in it, by using an identificator. Useful for admin scripts. 
+
+Identificators:
+```
+all -- Returns ALL players, including the LocalPlayer.
+others -- The same thing as "all", but excludes the LocalPlayer.
+random -- Returns a table of some random player. (Does not include the LocalPlayer, if there's no players it will return a blank table.)
+<playerName(ShortenedOrFull(DisplayOrUser))> -- Y'know that already.
+```
+
+Example use:
+```lua
+for i,v in ExtraAbilities.FindPlayersAdvanced("others") do
+	v:Destroy()
+end
+```
 
 # 4. Credits 
 
