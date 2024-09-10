@@ -1,6 +1,6 @@
 local ExtraAbilities = {}
 
-ExtraAbilities.GetVersion = function()return"1.11"end
+ExtraAbilities.GetVersion = function()return"1.12"end
 
 ExtraAbilities.CloneRef = cloneref or function(...)return...end
 ExtraAbilities.CloneFunction = clonefunction or function(...)return...end
@@ -395,6 +395,30 @@ ExtraAbilities.UncoverTable = function(tbl,maxloops)
 		end 
 	end 
 	return ExtraAbilities.CleanupTable(tblll)
-end
+end 
+
+ExtraAbilities.FindPlayersAdvanced(function(idcator)
+	assert(typeof(idcator)=="string", "expected string, got "..typeof(idcator))
+	local plrs = game:GetService("Players")
+	local lclplr = plrs.LocalPlayer 
+	local allplrs = plrs:GetPlayers()
+	local function excludeLocalPlayer()
+		table.remove(allplrs,lclplr)
+	end 
+	if idcator == "all" then 
+		return allplrs 
+	elseif idcator == "others" then 
+		excludeLocalPlayer()
+		return allplrs 
+	elseif idcator == "random" then 
+		excludeLocalPlayer() 
+		if #allplrs <= 0 then 
+			return {} 
+		end 
+		return allplrs[math.random(1,#allplrs)] 
+	else 
+		return {ExtraAbilities.FindPlayerByName(idcator)} 
+	end 
+end 
 
 return ExtraAbilities
