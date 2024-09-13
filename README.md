@@ -63,6 +63,10 @@ v1.10 -- "A bit of extra-sauce" update: Part 3.
 └ [ - ] Removed GetSenvID function.
 v1.11 -- "A bit of extra-sauce" update: Part 4.
 └ [ + ] Added UncoverTable function.
+v1.12 -- API Dump update: Part 1.
+├ [ + ] Added LoadAPIDump function.
+├ [ + ] Added GetAllProperties function.
+└ [ + ] Added GetAllServices function.
 ```
 
 # 1. Requiring the module.
@@ -83,7 +87,7 @@ No, you can't use this module on the server.
 
 This chapter is about basic functions
 
-## 2.1. CloneRef function. (EXPLOIT-ONLY)
+## 2.1. CloneRef function.
 
 `ExtraAbilities.CloneRef()` is a shortcut to `cloneref()`, but with error handling. `cloneref()` is a global exploit-only function, that creates a reference to the instance to be used. This function helps exploits to bypass in-game anti-cheat scripts.
 
@@ -92,7 +96,7 @@ Example use:
 ExtraAbilities.CloneRef(game:GetService("Workspace")).Part:Destroy();
 ```
 
-## 2.2. Chat function. (CLIENT-ONLY)
+## 2.2. Chat function.
 
 `ExtraAbilities.Chat()` makes you chat any message possible, no matter what kind of version TextChatService has.
 
@@ -101,7 +105,7 @@ Example use:
 ExtraAbilities.Chat("I like waffles!");
 ```
 
-### 2.2.1. Message function. (CLIENT-ONLY)
+### 2.2.1. Message function.
 
 `ExtraAbilities.Message()` is an alternative to `ExtraAbilities.Chat()`, which is equivalent to it.
 
@@ -175,7 +179,7 @@ Example use:
 print(ExtraAbilities.GetIP()) -- IP address...
 ```
 
-## 2.9. CloneFunction function. (EXPLOIT-ONLY)
+## 2.9. CloneFunction function.
 
 `ExtraAbilities.CloneFunction()` is a shortcut to `clonefunction()`, but with error handling. `clonefunction()` is a global exploit-only function, that clones the function and returns the cloned function to be used...I don't know, why this function exists at all.
 
@@ -229,7 +233,7 @@ print(#tbl) -- 0
 print(ExtraAbilities.SmartTableItemCount(tbl)) -- 3
 ```
 
-## 3.3. SafeRequire function. (EXPLOIT-ONLY)
+## 3.3. SafeRequire function.
 
 Unlike `require()`, `ExtraAbilities.SafeRequire()` function provides more stability with requiring the asset properly.
 
@@ -238,7 +242,7 @@ Example use:
 ExtraAbilities.SafeRequire(1234567890)();
 ```
 
-## 3.4. Notify function. (CLIENT-ONLY)
+## 3.4. Notify function.
 
 `ExtraAbilities.Notify()` spawns a default Notification with provided settings.
 
@@ -312,7 +316,7 @@ for i,v in pairs(ExtraAbilities.GetSpecificDescendants(game,properties)) do
 end
 ```
 
-## 3.8. DebugCode function. (EXPLOIT-ONLY)
+## 3.8. DebugCode function.
 
 `ExtraAbilities.DebugCode()` shows the works of the specific script to the player. It tells if the script execution was successful and how long did it take for the script to finish the work.
 
@@ -325,7 +329,7 @@ ExtraAbilities.DebugCode([====[print("Hi!")wait(1)]===])
 
 Planning to make `ExtraAbilities.DebugFunction()` extra-function.
 
-## 3.9. BypassAdonisAnticheat function. (EXPLOIT-ONLY) 
+## 3.9. BypassAdonisAnticheat function.
 
 This function comes in handy, when trying to use a RemoteSpy in Adonis-protected games. 
 
@@ -336,7 +340,7 @@ ExtraAbilities.BypassAdonisAnticheat()
 -- And everything after...
 ```
 
-## 3.10. GetSenvID function. (EXPLOIT-ONLY) [REMOVED]
+## 3.10. GetSenvID function. [REMOVED]
 
 _(This function has been removed, due to it's unstability and lack of worth. You may use a commit, but it would be unstable. Use the GetValueID and getsenv functions instead.)_ 
 
@@ -347,9 +351,7 @@ Example use:
 print(ExtraAbilities.GetSenvID(script)) -- hex code...
 ```
 
-## 3.11. GetExploitScripts function. (EXPLOIT-ONLY) [RESHAPED]
-
-_(This function has been reshaped and most scripts using this function may break, if not updated. If your script is using this function, please reshape your own script for the new function.)_
+## 3.11. GetExploitScripts function.
 
 This function searches for and returns ExploitScripts in the game memory. This function is really powerful and you can make powerful scripts like ExploitSpys.
 
@@ -371,7 +373,7 @@ for i,v in pairs(ExtraAbilities.GetExploitScripts()) do
 end
 ```
 
-## 3.12. GetExploitScript function. (EXPLOIT-ONLY) [REMOVED]
+## 3.12. GetExploitScript function. [REMOVED]
 
 _(This function has been removed, due to it's unstability and lack of worth. You may use a commit, but it would be unstable. Use the GetInstanceByDebugID function instead.)_ 
 
@@ -382,7 +384,7 @@ Example use:
 ExtraAbilities.GetExploitScript(ExtraAbilities.GetSenvID(script)).Disabled = true -- This disables itself.
 ```
 
-## 3.13. GetScriptBySenvID function. (EXPLOIT-ONLY) [REMOVED]
+## 3.13. GetScriptBySenvID function. [REMOVED]
 
 _(This function has been removed, due to it's unstability and lack of worth. You may use a commit, but it would be unstable. Use the GetInstanceByDebugID function instead.)_ 
 
@@ -402,7 +404,7 @@ Example use:
 print(ExtraAbilities.GetValueID(print)) -- Value ID...
 ```
 
-## 3.15. GetValueByID function. (EXPLOIT-ONLY)
+## 3.15. GetValueByID function.
 
 This function is basically GetValueID, but reversed. It gets a specific table/function/userdata by provided ID from all memory. Returns `nil` if the value isn't found.
 
@@ -411,7 +413,7 @@ Example use:
 ExtraAbilities.GetValueByID(ExtraAbilities.GetValue(print))("Hello World!") -- "Hello World!"
 ```
 
-## 3.16. SafeDestroy function. (EXPLOIT-ONLY)
+## 3.16. SafeDestroy function.
 
 This function destroys any Instance, without triggering a few RBXScriptSignals, such as `Instance.Destroying`, `Instance.Changed`, `Instance.AncestryChanged` and `Instance:GetPropertyChangedSignal("Parent")`. This is useful for bypassing anti-cheats.
 
@@ -420,7 +422,7 @@ Example use:
 Inst1:Destroy() -- Scripts notice the destruction.
 ExtraAbilities.SafeDestroy(Inst2) -- No script notices the destruction.
 
-## 3.17. GetInstanceByDebugID function. (EXPLOIT-ONLY)
+## 3.17. GetInstanceByDebugID function.
 
 This function returns an Instance with the exact debug ID, the Instance's debug ID can be retrieved via `Instance.GetDebugId` method.
 
@@ -530,6 +532,61 @@ local extbl = {
 }
 
 print(ExtraAbilities.UncoverTable(extbl,10)) -- {1, 2, 3}
+```
+
+## 3.22. LoadAPIDump function.
+
+This function returns a full API dump table, containing all Instance classes and Enums with their members. The entire full API dump table is approx. 5 MB! (No wonder why it takes so long to load the full API dump.)
+
+The Full API Dump can be seen [here](http://github.com/MaximumADHD/Roblox-Client-Tracker/raw/roblox/Full-API-Dump.json).
+
+Returned table:
+```
+{
+	Enums = {
+		<...>
+	},
+	Classes = {
+		<...>
+	},
+	Version = 1
+}
+```
+
+Example use:
+```lua
+for i,v in pairs(ExtraAbilities.LoadAPIDump().Classes) do
+	print(i,"--",v.Name)
+end
+```
+
+## 3.23. GetAllProperties function.
+
+This function returns an array of all properties assigned to the provided Instance, along with their current values. Very useful for DEX Explorers.
+
+_(Takes long to be called, because it uses `ExtraAbilities.LoadAPIDump()` function.)_
+
+Formula:
+```lua
+<table(array)> ExtraAbilities.GetAllProperties(<Instance>)
+```
+
+Example use:
+```lua
+for i,v in pairs(ExtraAbilities.GetAllProperties(script)) do
+	print(i,"--",v,"(",typeof(v),")")
+end
+```
+
+## 3.24. GetAllServices function.
+
+This function returns an array of all services loaded onto the DataModel. (Not including the services dedicated to `UserSettings()` and `settings()`)
+
+Example use:
+```lua
+for i,v in pairs(ExtraAbilities.GetAllServices()) do
+	print(i,"--",v,"(",typeof(v),")")
+end
 ```
 
 # 4. Credits 
