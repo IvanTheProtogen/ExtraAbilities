@@ -397,4 +397,6 @@ ExtraAbilities.UncoverTable = function(tbl,maxloops)
 	return ExtraAbilities.CleanupTable(tblll)
 end 
 
+getgenv().ExtraAbilities = ExtraAbilities
+
 return ExtraAbilities
