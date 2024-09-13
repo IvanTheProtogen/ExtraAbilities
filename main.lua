@@ -4,7 +4,7 @@ end
 
 local ExtraAbilities = {}
 
-ExtraAbilities.GetVersion = function()return"1.11"end
+ExtraAbilities.GetVersion = function()return"1.12"end
 
 ExtraAbilities.CloneRef = cloneref or function(...)return...end
 ExtraAbilities.CloneFunction = clonefunction or function(...)return...end
@@ -399,6 +399,46 @@ ExtraAbilities.UncoverTable = function(tbl,maxloops)
 		end 
 	end 
 	return ExtraAbilities.CleanupTable(tblll)
+end 
+
+local APIDump = nil 
+
+ExtraAbilities.LoadAPIDump = function()
+	if not APIDump then 
+		print("[ ExtraAbilities ] Getting the full API dump, please wait..."
+		APIDump = game:GetService("HttpService"):JSONDecode(game:HttpGet("http://github.com/MaximumADHD/Roblox-Client-Tracker/raw/roblox/Full-API-Dump.json"))
+		print("[ ExtraAbilities ] Full API Dump retrieved!")
+	end 
+	return APIDump 
+end 
+
+ExtraAbilities.GetAllProperties = function(inst)
+	local mmbrs = {}
+	for i,v in pairs(ExtraAbilities.LoadAPIDump().Classes) do 
+		if inst:IsA(tostring(v.Name)) then 
+			for x,y in pairs(v.Members) do 
+				if string.lower(y.MemberType) == string.lower("property") then 
+					pcall(function()
+						setscriptable(inst,y.Name,true)
+						mmbrs[y.Name] == inst[y.Name]
+					end)
+				end 
+			end 
+		end 
+	end
+	return mmbrs 
+end 
+
+ExtraAbilities.GetAllServices = function()
+	local srvs = {}
+	for i,v in pairs(ExtraAbilities.LoadAPIDump().Classes) do 
+		if table.find(v.Tags,"Service") then 
+			pcall(function()
+				srvs[v.Name] = game:GetService(v.Name)
+			end)
+		end
+	end 
+	return srvs 
 end 
 
 getgenv().ExtraAbilities = ExtraAbilities
