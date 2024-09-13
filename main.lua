@@ -445,6 +445,8 @@ ExtraAbilities.GetAllServices = function()
 	return srvs 
 end 
 
+ExtraAbilities = table.freeze(ExtraAbilities)
+
 getgenv().ExtraAbilities = ExtraAbilities
 
 return ExtraAbilities
