@@ -1,3 +1,7 @@
+if getgenv().ExtraAbilities then 
+	return getgenv().ExtraAbilities 
+end 
+
 local ExtraAbilities = {}
 
 ExtraAbilities.GetVersion = function()return"1.11"end
