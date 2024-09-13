@@ -405,7 +405,7 @@ local APIDump = nil
 
 ExtraAbilities.LoadAPIDump = function()
 	if not APIDump then 
-		print("[ ExtraAbilities ] Getting the full API dump, please wait..."
+		print("[ ExtraAbilities ] Getting the full API dump, please wait...")
 		APIDump = game:GetService("HttpService"):JSONDecode(game:HttpGet("http://github.com/MaximumADHD/Roblox-Client-Tracker/raw/roblox/Full-API-Dump.json"))
 		print("[ ExtraAbilities ] Full API Dump retrieved!")
 	end 
