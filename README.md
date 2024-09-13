@@ -5,6 +5,7 @@ Welcome to the official documentation of ExtraAbilities, here you will learn how
 For Exploits, functions that are required for some functions to work:
 ```
 getgc
+getgenv -- IMPORTANT
 getsenv
 require
 game.HttpGet
@@ -69,7 +70,7 @@ v1.11 -- "A bit of extra-sauce" update: Part 4.
 In order to require the ExtraAbilities module, we should use `local`, `loadstring()` and `game:HttpGet()`.
 
 ```lua
-local ExtraAbilities;if game:GetService("RunService"):IsClient()then ExtraAbilities=loadstring(game:HttpGet("https://raw.githubusercontent.com/IvanTheProtogen/ExtraAbilities/main/main.lua"))()else ExtraAbilities=loadstring(game:GetService("HttpService"):GetAsync("https://raw.githubusercontent.com/IvanTheProtogen/ExtraAbilities/main/main.lua"))()end;
+local ExtraAbilities=getgenv().ExtraAbilities or loadstring(game:HttpGet("http://github.com/IvanTheProtogen/ExtraAbilities/raw/main/main.lua"))();
 ```
 
 Now, we've required the ExtraAbilities module, we have access to more functions, that we can use. Let's introduce the functions we now have.
