@@ -418,8 +418,12 @@ ExtraAbilities.GetAllProperties = function(inst)
 		if inst:IsA(tostring(v.Name)) then 
 			for x,y in pairs(v.Members) do 
 				if string.lower(y.MemberType) == string.lower("property") then 
-					pcall(function()
-						setscriptable(inst,y.Name,true)
+					pcall(function() 
+						if table.find(y,"Tags") then 
+							if table.find(y.Tags,"NotScriptable") then 
+								setscriptable(inst,y.Name,true)
+							end 
+						end 
 						mmbrs[y.Name] = inst[y.Name]
 					end)
 				end 
