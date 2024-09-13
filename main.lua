@@ -420,7 +420,7 @@ ExtraAbilities.GetAllProperties = function(inst)
 				if string.lower(y.MemberType) == string.lower("property") then 
 					pcall(function()
 						setscriptable(inst,y.Name,true)
-						mmbrs[y.Name] == inst[y.Name]
+						mmbrs[y.Name] = inst[y.Name]
 					end)
 				end 
 			end 
