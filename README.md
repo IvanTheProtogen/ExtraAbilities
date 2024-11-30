@@ -79,9 +79,11 @@ local ExtraAbilities=getgenv().ExtraAbilities or loadstring(game:HttpGet("http:/
 
 Now, we've required the ExtraAbilities module, we have access to more functions, that we can use. Let's introduce the functions we now have.
 
-## 1.1. IMPORTANT NOTE 
+## 1.1. ⚠️ NOTICE! ⚠️
 
-No, you can't use this module on the server.
+This project has been discontinued due to lack of care and motivation to continue it. Do not expect ANY updates on ExtraAbilities, this module has died and will never be restored.
+
+You are permitted to fork this project and throw in unofficial changes.
 
 # 2. Basic functions.
 
