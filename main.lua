@@ -216,22 +216,7 @@ end
 ExtraAbilities.SafeDestroy = function(v)local NeutralizeConnection = function(con)for a,b in pairs(getconnections(con))do b:Disable()end end; NeutralizeConnection(v.Destroying)NeutralizeConnection(v.Changed)NeutralizeConnection(v.AncestryChanged)NeutralizeConnection(v:GetPropertyChangedSignal("Parent"))v:Destroy()end;ExtraAbilities.BypassAdonisAnticheat = function()for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do if v:IsA("RemoteEvent")then if ((string.sub(v.Name,9,9)=="-")and(string.sub(v.Name,14,14)=="-")and(string.sub(v.Name,19,19)=="-")and(string.sub(v.Name,24,24)=="-"))then Instance.new("RemoteEvent",game:GetService("ReplicatedStorage")).Name=v.Name;ExtraAbilities.SafeDestroy(v)end end end end
 
 ExtraAbilities.BypassAdonisAnticheat = function()
--- Adonis Anticheat Bypass
-
-warn("Finding and destroying the RemoteEvent...")
-for i,v in game:GetService("ReplicatedStorage"):GetChildren() do
-	if v:IsA("RemoteEvent") then
-		local aaa = string.split(v.Name,"")
-		if aaa[9]=="-" and aaa[14]=="-" and aaa[19]=="-" and aaa[24]=="-" then
-			v:Destroy()
-			print("Found and destroyed!")
-		end
-	end
-end
-
-warn("Locking the Player.Kick function...")
-hookfunction(game.Players.LocalPlayer.Kick, function()repeat task.wait(2^31)until false end)
-print("Function locked!")
+print("Sorry! Moved to github.com/IvanTheProtogen/NoMoreAdonis !")
 end 
 
 ExtraAbilities.GetExploitScripts = function()
