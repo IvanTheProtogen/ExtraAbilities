@@ -237,7 +237,7 @@ end
 
 ExtraAbilities.GetValueID = function(val) -- table, function and userdata can be used.
 
-local cmpr=function(typy)return (type(val)==typy)end;
+local cmpr=function(typy)return (typeof(val)==typy)end;
 
 a = tostring(val) 
 b = #a 
@@ -260,7 +260,7 @@ ExtraAbilities.GetValueByID = function(id)
 local ReturningValue = nil 
 
 for i,v in pairs(getgc(true)) do 
-	if ( ( type(v) == "table" ) or ( type(v) == "function" ) or ( type(v) == "userdata" ) ) then 
+	if ( ( typeof(v) == "table" ) or ( typeof(v) == "function" ) or ( typeof(v) == "userdata" ) ) then 
 		if string.match(ExtraAbilities.GetValueID(v),tostring(id)) then 
 			if ReturningValue == nil then 
 				ReturningValue = v 
