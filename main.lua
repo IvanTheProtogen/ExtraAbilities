@@ -237,7 +237,7 @@ end
 
 ExtraAbilities.GetValueID = function(val) -- table, function and userdata can be used.
 
-local cmpr=function(typy)return (typeof(val)==typy)end;
+local cmpr=function(typy)return (type(val)==typy)end;
 
 a = tostring(val) 
 b = #a 
@@ -249,7 +249,7 @@ return string.sub(a,13,b)
 elseif cmpr("userdata") then 
 return string.sub(a,13,b)
 else 
-return error("expected table, function or userdata, got "..typeof(val))
+return error("expected table, function or userdata, got "..type(val))
 end 
 
 end 
@@ -260,7 +260,7 @@ ExtraAbilities.GetValueByID = function(id)
 local ReturningValue = nil 
 
 for i,v in pairs(getgc(true)) do 
-	if ( ( typeof(v) == "table" ) or ( typeof(v) == "function" ) or ( typeof(v) == "userdata" ) ) then 
+	if ( ( type(v) == "table" ) or ( type(v) == "function" ) or ( type(v) == "userdata" ) ) then 
 		if string.match(ExtraAbilities.GetValueID(v),tostring(id)) then 
 			if ReturningValue == nil then 
 				ReturningValue = v 
@@ -320,7 +320,6 @@ ExtraAbilities.GetSecurityCapabilities = function()
 	-- LocalUser -- game:GetService("VersionControlService")
 	-- RobloxScript -- game:GetService("CorePackages")
 	-- RobloxEngine -- game:GetService("PlaceStatsService")
-
 	-- WritePlayer -- Instance.new("Player")
 	-- NotAccessible -- game:GetService("Chat").LoadDefaultChat = game:GetService("Chat").LoadDefaultChat 
 
