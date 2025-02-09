@@ -239,8 +239,21 @@ ExtraAbilities.GetValueID = function(val) -- table, function and userdata can be
 
 local cmpr=function(typy)return (type(val)==typy)end;
 
+-- For Instance and stuff 
+local momo = getrawmetatable(val)
+local __type
+if momo then 
+	__type = momo.__type
+	momo.__type = nil 
+end
+
 a = tostring(val) 
 b = #a 
+
+-- This again 
+if momo then 
+	momo.__type = __type 
+end
 
 if cmpr("table") then 
 return string.sub(a,10,b)
