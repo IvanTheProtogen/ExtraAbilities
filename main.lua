@@ -242,9 +242,12 @@ local cmpr=function(typy)return (type(val)==typy)end;
 -- For Instance and stuff 
 local momo = getrawmetatable(val)
 local __type
+local __tostring
 if momo then 
 	__type = momo.__type
+	__tostring = momo.__tostring
 	momo.__type = nil 
+	momo.__tostring = nil
 end
 
 a = tostring(val) 
@@ -253,6 +256,7 @@ b = #a
 -- This again 
 if momo then 
 	momo.__type = __type 
+	momo.__tostring = __tostring
 end
 
 if cmpr("table") then 
