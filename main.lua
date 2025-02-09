@@ -244,6 +244,7 @@ local momo = getrawmetatable(val)
 local __type
 local __tostring
 if momo then 
+	setreadonly(momo, false)
 	__type = momo.__type
 	__tostring = momo.__tostring
 	momo.__type = nil 
