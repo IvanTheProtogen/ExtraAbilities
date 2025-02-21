@@ -445,6 +445,17 @@ ExtraAbilities.GetAllServices = function()
 	return srvs 
 end 
 
+ExtraAbilities.NotifyRequest = function(title, desc, btnA, btnB)
+	local response
+	local bindfunc = Instance.new("BindableFunction")
+	bindfunc.OnInvoke = function(responsee)
+		response = responsee
+	end
+	ExtraAbilities.Notify(title, desc, nil, math.huge, bindfunc, btnA, btnB)
+	repeat task.wait() until response~=nil
+	return response
+end
+
 ExtraAbilities = table.freeze(ExtraAbilities)
 
 getgenv().ExtraAbilities = ExtraAbilities
