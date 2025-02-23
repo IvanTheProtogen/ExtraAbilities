@@ -472,11 +472,11 @@ ExtraAbilities.InstancePointer = function(original, toPointAt)
 			end)
 		end
 	end 
-	function pointer.CallMetamethod(mm, ...)
+	function pointer.CallMetamethod(mm, args)
 		local cuz = nil
 		pointer.Active = false 
 		task.spawn(function()
-			cuz = {getrawmetatable(pointer.Original)[mm](pointer.Original, ...)}
+			cuz = {getrawmetatable(pointer.Original)[mm](pointer.Original, table.unpack(args))}
 		end)
 		pointer.Active = true 
 		repeat task.wait() until cuz 
