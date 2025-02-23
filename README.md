@@ -211,6 +211,8 @@ _Information about Thread Identities can be seen [here](https://roblox.fandom.co
 
 This function creates and returns a `InstancePointer` class, that you can use to disguise an instance as another instance.
 
+_[ ❗ ] **`InstancePointer` may not be compatible.** For some scripts and environments, `InstancePointer` may crash/freeze the game or make the scripts error._
+
 ```
 <InstancePointer (table)> ExtraAbilities.InstancePointer(original: Instance, toPointAt: Instance)
 ```
@@ -228,14 +230,14 @@ Example use:
 local dummy = Instance.new("Folder", workspace)
 local pointer = ExtraAbilities.InstancePointer(dummy, workspace)
 
-print(dummy.ClassName)
+print(dummy.ClassName) -- "Workspace" instead of "Folder"
 ```
 
 ## 2.13. NotifyRequest function.
 
 This function creates a notification with buttons, that will stay on the screen until the user presses a button on it.
 
-_[ ⚠️ ] **This function yields.** It will yield until completion._
+_[ ⚠️ ] **This function yields.** The function will yield until completion._
 
 ```
 <string> ExtraAbilities.NotifyRequest(title: string, desc: string, btnA: string, btnB: string)
