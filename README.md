@@ -215,6 +215,8 @@ This function creates and returns a `InstancePointer` class, that you can use to
 
 > _[ ❗ ] **`InstancePointer` may not be compatible.** For some scripts and environments, `InstancePointer` may crash/freeze the game or make the scripts error._
 
+**HEY!** Please make sure that the `InstancePointer` doesn't point at `InstancePointer.Original`'s ancestor! This may make the game freeze when `Instance:GetDescendants()` is called on the ancestor!
+
 ```
 <InstancePointer (table)> ExtraAbilities.InstancePointer(original: Instance, toPointAt: Instance)
 ```
