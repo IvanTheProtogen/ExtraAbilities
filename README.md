@@ -11,6 +11,7 @@ require
 game.HttpGet
 getconnections
 hookmetamethod
+hookfunction
 getscripthash
 getscripts
 getinstances
