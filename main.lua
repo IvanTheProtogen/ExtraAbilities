@@ -471,6 +471,16 @@ ExtraAbilities.InstancePointer = function(original, toPointAt)
 				return old(inst, ...)
 			end)
 		end
+	end 
+	function pointer.CallMetamethod(mm, ...)
+		local cuz = nil
+		pointer.Active = false 
+		task.spawn(function()
+			cuz = {getrawmetatable(pointer.Original)[mm](pointer.Original, ...)}
+		end)
+		pointer.Active = true 
+		repeat task.wait() until cuz 
+		return cuz
 	end
 	return pointer
 end
