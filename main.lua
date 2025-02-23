@@ -4,7 +4,7 @@ end
 
 local ExtraAbilities = {}
 
-ExtraAbilities.GetVersion = function()return"1.12"end
+ExtraAbilities.GetVersion = function()return"1.13"end
 
 ExtraAbilities.CloneRef = cloneref or function(...)return...end
 ExtraAbilities.CloneFunction = clonefunction or function(...)return...end
@@ -454,6 +454,25 @@ ExtraAbilities.NotifyRequest = function(title, desc, btnA, btnB)
 	ExtraAbilities.Notify(title, desc, nil, math.huge, bindfunc, btnA, btnB)
 	repeat task.wait() until response~=nil
 	return response
+end
+
+ExtraAbilities.InstancePointer = function(original, toPointAt)
+	local pointer = {}
+	pointer.Active = true
+	pointer.Original = original
+	pointer.PointAt = toPointAt
+	setmetatable(pointer, {__tostring=function()return"InstancePointer"end})
+	for i,v in getrawmetatable(pointer.Original) do
+		if type(v) == "function" then
+			local old;old = hookfunction(v, function(inst, ...)
+				if inst==pointer.Original and pointer.Active then
+					return old(pointer.PointAt, ...)
+				end
+				return old(inst, ...)
+			end)
+		end
+	end
+	return pointer
 end
 
 ExtraAbilities = table.freeze(ExtraAbilities)
