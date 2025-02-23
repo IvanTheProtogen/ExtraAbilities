@@ -2,10 +2,10 @@
 
 Welcome to the official documentation of ExtraAbilities, here you will learn how to use the ExtraAbilities module in your scripts.
 
-For Exploits, functions that are required for some functions to work:
+**FUNCTIONS REQUIRED:**
 ```
 getgc
-getgenv -- IMPORTANT
+getgenv
 getsenv
 require
 game.HttpGet
@@ -14,6 +14,7 @@ hookmetamethod
 getscripthash
 getscripts
 getinstances
+getrawmetatable
 ```
 
 For functions, that are added in The Memory Search update, the `script` variable should not be fake. The fake `script` variables are stated in [Official Synapse X Documentation's Page 3.1](<https://web.archive.org/web/20220826150114/https://x.synapse.to/docs/development/script_env.html>).
