@@ -67,6 +67,9 @@ v1.12 -- API Dump update: Part 1.
 ├ [ + ] Added LoadAPIDump function.
 ├ [ + ] Added GetAllProperties function.
 └ [ + ] Added GetAllServices function.
+v1.13 -- "A bit of extra-sauce" update: Part 5.
+├ [ + ] Added NotifyRequest function.
+└ [ + ] Added InstancePointer function.
 ```
 
 # 1. Requiring the module.
@@ -78,12 +81,6 @@ local ExtraAbilities=getgenv().ExtraAbilities or loadstring(game:HttpGet("http:/
 ```
 
 Now, we've required the ExtraAbilities module, we have access to more functions, that we can use. Let's introduce the functions we now have.
-
-## 1.1. ⚠️ NOTICE! ⚠️
-
-This project has been discontinued due to lack of care and motivation to continue it. Do not expect ANY updates on ExtraAbilities, this module has died and will never be restored.
-
-You are permitted to fork this project and throw in unofficial changes.
 
 # 2. Basic functions.
 
@@ -209,6 +206,49 @@ print(ExtraAbilities.GetThreadIdentity()) -- Thread Identity...
 ```
 
 _Information about Thread Identities can be seen [here](https://roblox.fandom.com/wiki/Security_context)._
+
+## 2.12. InstancePointer function.
+
+This function creates and returns a `InstancePointer` class, that you can use to disguise an instance as another instance.
+
+```
+<InstancePointer (table)> ExtraAbilities.InstancePointer(original: Instance, toPointAt: Instance)
+```
+
+```
+InstancePointer.Active (default:true) -- Determines whether the InstancePointer shall be ON or OFF.
+InstancePointer.Original -- Instance that will disguise.
+InstancePointer.PointAt -- Instance that will be disguised as.
+```
+
+The `InstancePointer` would force the `Original` instance to reflect the incoming requests onto the `PointAt` instance. Useful for bypassing anti-cheats.
+
+Example use:
+```lua
+local dummy = Instance.new("Folder", workspace)
+local pointer = ExtraAbilities.InstancePointer(dummy, workspace)
+
+print(dummy.ClassName)
+```
+
+## 2.13. NotifyRequest function.
+
+This function creates a notification with buttons, that will stay on the screen until the user presses a button on it.
+
+_[ ⚠️ ] **This function yields.** It will yield until completion._
+
+```
+<string> ExtraAbilities.NotifyRequest(title: string, desc: string, btnA: string, btnB: string)
+```
+
+Example use:
+```lua
+local response = ExtraAbilties.NotifyRequest("Shutdown?" "Shutdown the game?", "Yes", "No")
+
+if response == "Yes" then
+	game:shutdown()
+end
+```
 
 # 3. Advanced Functions.
 
