@@ -480,7 +480,7 @@ ExtraAbilities.InstancePointer = function(original, toPointAt)
 		end)
 		pointer.Active = true 
 		repeat task.wait() until cuz 
-		return cuz
+		return table.unpack(cuz)
 	end
 	return pointer
 end
