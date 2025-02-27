@@ -485,11 +485,11 @@ ExtraAbilities.InstancePointer = function(original, toPointAt)
 	return pointer
 end
 
-ExtraAbilities.SetDevConsoleVisible = function(bool)
-	return ExtraAbilities.CloneRef(game:GetService("StarterGui")):SetCore("DevConsoleVisible", {visibility=bool})
+ExtraAbilities.SetDevConsoleVisible = function(bool) -- EXPERIMENTAL
+	return ExtraAbilities.CloneRef(game:GetService("StarterGui")):SetCore("DevConsoleVisible", bool)
 end
 
-ExtraAbilities.GetDevConsoleVisible = function()
+ExtraAbilities.GetDevConsoleVisible = function() -- EXPERIMENTAL
 	return ExtraAbilities.CloneRef(game:GetService("StarterGui")):GetCore("DevConsoleVisible")
 end
 
