@@ -485,6 +485,14 @@ ExtraAbilities.InstancePointer = function(original, toPointAt)
 	return pointer
 end
 
+ExtraAbilities.SetDevConsoleVisible = function(bool)
+	return ExtraAbilities.CloneRef(game:GetService("StarterGui")):SetCore("DevConsoleVisible", {visibility=bool})
+end
+
+ExtraAbilities.GetDevConsoleVisible = function()
+	return ExtraAbilities.CloneRef(game:GetService("StarterGui")):GetCore("DevConsoleVisible")
+end
+
 ExtraAbilities = table.freeze(ExtraAbilities)
 
 getgenv().ExtraAbilities = ExtraAbilities
