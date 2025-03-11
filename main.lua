@@ -491,7 +491,97 @@ end
 
 ExtraAbilities.GetDevConsoleVisible = function() -- EXPERIMENTAL
 	return ExtraAbilities.CloneRef(game:GetService("StarterGui")):GetCore("DevConsoleVisible")
+end 
+
+-- EXPERIMENTAL
+ExtraAbilities.SaveInstance = loadstring([=====[local ExtraAbilities=getgenv().ExtraAbilities or loadstring(game:HttpGet("http://github.com/IvanTheProtogen/ExtraAbilities/raw/main/main.lua"))();
+
+local api = ExtraAbilities.LoadAPIDump()
+
+local function findClass(class)
+	for i,v in api.Classes do
+		if v.Name == class then
+			return v
+		end
+	end
 end
+
+local function isCreatable(class)
+	class = findClass(class)
+	if class.Tags then
+		if class.Tags.NotCreatable then
+			return false
+		end
+	end
+	return true
+end
+
+local function formatUDim2(udim2)
+	return string.gsub(string.gsub(tostring(udim2),"{",""),"}","")
+end
+
+local root
+local function formatInstance(inst)
+	if inst == root then
+		return "ROOT"
+	end
+	return "INSTANCE_"..inst:GetDebugId()
+end
+
+local function formatMain(val) -- cant go without yandere dev type code here
+	-- [any]Sequence types aren't supported!!
+	if typeof(val) == "string" then
+		return '[==['..val..']==]'
+	elseif typeof(val) == "number" then
+		return tostring(val)
+	elseif typeof(val) == "UDim2" then
+		return 'UDim2.new('..formatUDim2(val)..')'
+	elseif typeof(val) == "Instance" then
+		return formatInstance(val)
+	elseif typeof(val) == "BrickColor" then
+		return 'BrickColor.new("'..tostring(val)..'")'
+	elseif typeof(val) == "boolean" then
+		return tostring(val)
+	elseif typeof(val) == "EnumItem" then
+		return tostring(val)
+	end
+	return typeof(val)..'.new('..tostring(val)..')'
+end
+
+local setprop = [[setprop=function(a,b,c)pcall(function()a[b]=c end)end]]
+
+local function saveinstance(tbl)
+	root = Instance.new("Folder")
+	local insts = {}
+	for i,v in tbl do 
+		pcall(function()
+			v.Archivable = true 
+			v = v:Clone()
+			v.Parent = root
+			insts[#insts+1] = v 
+			for x,y in v:GetDescendants() do 
+				insts[#insts+1] = y 
+			end 
+		end)
+	end
+	local code = '-- SaveInstance script made by IvanTheProtogen on GitHub, available in ExtraAbilities\n\n'..setprop..'\n\nlocal ROOT = Instance.new("Folder")\n'
+	for i,v in insts do
+		code = code..'local '..formatInstance(v)..' = Instance.new("'..v.ClassName..'")\n'
+	end
+	code = code..'\n'
+	for i,v in insts do
+		for x,y in ExtraAbilities.GetAllProperties(v) do
+			code = code..'pcall(function()setprop('..formatInstance(v)..',"'..x..'",'..formatMain(y)..')end)\n'
+		end
+		code = code..'\n'
+	end
+	code = code..'ROOT.Name = "saveinstance"\nreturn ROOT\n\n-- UwU'
+	root:Destroy()
+	root = nil
+	return code
+end 
+
+return saveinstance]=====])() 
 
 ExtraAbilities = table.freeze(ExtraAbilities)
 
