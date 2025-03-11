@@ -2,8 +2,7 @@ if getgenv().ExtraAbilities then
 	return getgenv().ExtraAbilities 
 end 
 
-local ExtraAbilities = {} 
-getgenv().ExtraAbilities = ExtraAbilities 
+local ExtraAbilities = {}
 
 ExtraAbilities.GetVersion = function()return"1.13"end
 
@@ -494,7 +493,7 @@ ExtraAbilities.GetDevConsoleVisible = function() -- EXPERIMENTAL
 	return ExtraAbilities.CloneRef(game:GetService("StarterGui")):GetCore("DevConsoleVisible")
 end 
 
--- EXPERIMENTAL 
+-- EXPERIMENTAL
 ExtraAbilities.SaveInstance = loadstring([=====[local ExtraAbilities=getgenv().ExtraAbilities or loadstring(game:HttpGet("http://github.com/IvanTheProtogen/ExtraAbilities/raw/main/main.lua"))();
 
 local api = ExtraAbilities.LoadAPIDump()
@@ -551,7 +550,14 @@ end
 
 local setprop = [[setprop=function(a,b,c)pcall(function()a[b]=c end)end]]
 
-local function saveinstance(tbl)
+local function wait(delay) 
+	if delay > 0 then 
+		task.wait(delay)
+	end 
+end
+
+local function saveinstance(tbl,delay)
+	delay = delay or 0
 	root = Instance.new("Folder")
 	local insts = {}
 	for i,v in tbl do 
@@ -571,7 +577,8 @@ local function saveinstance(tbl)
 	end
 	code = code..'\n'
 	for i,v in insts do
-		for x,y in ExtraAbilities.GetAllProperties(v) do
+		for x,y in ExtraAbilities.GetAllProperties(v) do 
+			wait(delay)
 			code = code..'pcall(function()setprop('..formatInstance(v)..',"'..x..'",'..formatMain(y)..')end)\n'
 		end
 		code = code..'\n'
@@ -582,6 +589,10 @@ local function saveinstance(tbl)
 	return code
 end 
 
-return saveinstance]=====])()
+return saveinstance]=====])() 
+
+ExtraAbilities = table.freeze(ExtraAbilities)
+
+getgenv().ExtraAbilities = ExtraAbilities
 
 return ExtraAbilities
