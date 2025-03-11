@@ -2,7 +2,8 @@ if getgenv().ExtraAbilities then
 	return getgenv().ExtraAbilities 
 end 
 
-local ExtraAbilities = {}
+local ExtraAbilities = {} 
+getgenv().ExtraAbilities = ExtraAbilities
 
 ExtraAbilities.GetVersion = function()return"1.13"end
 
@@ -592,7 +593,5 @@ end
 return saveinstance]=====])() 
 
 ExtraAbilities = table.freeze(ExtraAbilities)
-
-getgenv().ExtraAbilities = ExtraAbilities
 
 return ExtraAbilities
