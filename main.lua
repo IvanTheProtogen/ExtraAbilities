@@ -238,17 +238,16 @@ end
 
 ExtraAbilities.GetValueID = function(val) -- table, function, userdata and thread can be used.
 
-local cmpr=function(typy)return (typeof(val)==typy)end;
+local tp = typeof(val)
 
-a = tostring(val) 
-
-if cmpr("table") then 
-return a:sub(10)
-elseif cmpr("function") or cmpr("userdata") then 
-return a:sub(13)
-elseif cmpr("thread") then 
-return a:sub(11)
-return error("expected table, function, userdata or thread, got "..typeof(val))
+if tp=="table" then 
+return tostring(val):sub(10)
+elseif tp=="function" or tp=="userdata" then 
+return tostring(val):sub(13)
+elseif tp=="thread" then 
+return tostring(val):sub(11)
+else
+return error("expected table, function, userdata or thread, got "..tp)
 end 
 
 end 
