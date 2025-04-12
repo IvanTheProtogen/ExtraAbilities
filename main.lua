@@ -236,21 +236,19 @@ end
 
 end 
 
-ExtraAbilities.GetValueID = function(val) -- table, function and userdata can be used.
+ExtraAbilities.GetValueID = function(val) -- table, function, userdata and thread can be used.
 
 local cmpr=function(typy)return (typeof(val)==typy)end;
 
 a = tostring(val) 
-b = #a 
 
 if cmpr("table") then 
-return string.sub(a,10,b)
-elseif cmpr("function") then 
-return string.sub(a,13,b)
-elseif cmpr("userdata") then 
-return string.sub(a,13,b)
-else 
-return error("expected table, function or userdata, got "..type(val))
+return a:sub(10)
+elseif cmpr("function") or cmpr("userdata") then 
+return a:sub(13)
+elseif cmpr("thread") then 
+return a:sub(11)
+return error("expected table, function, userdata or thread, got "..typeof(val))
 end 
 
 end 
@@ -258,19 +256,13 @@ end
 if ExtraAbilities.IsClient() then 
 ExtraAbilities.GetValueByID = function(id) 
 
-local ReturningValue = nil 
-
 for i,v in pairs(getgc(true)) do 
-	if ( ( typeof(v) == "table" ) or ( typeof(v) == "function" ) or ( typeof(v) == "userdata" ) ) then 
+	if ( ( typeof(v) == "table" ) or ( typeof(v) == "function" ) or ( typeof(v) == "userdata" ) or ( typeof(v) == "thread" ) ) then 
 		if string.match(ExtraAbilities.GetValueID(v),tostring(id)) then 
-			if ReturningValue == nil then 
-				ReturningValue = v 
-			end 
+			return v
 		end 
 	end
 end 
-
-return ReturningValue
 
 end 
 
