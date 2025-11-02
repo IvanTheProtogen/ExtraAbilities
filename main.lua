@@ -42,8 +42,8 @@ ExtraAbilities.Info = function(...)
     return ExtraAbilities.CloneRef(game:GetService("TestService")):Message(...)
 end 
 
-ExtraAbilities.Info("This script is using ExtraAbilities module! (Get ExtraAbilities module here: https://github.com/IvanTheProtogen/ExtraAbilities/)")
-if ExtraAbilities.IsClient()then ExtraAbilities.Notify("This script is using ExtraAbilities module!", "Get ExtraAbilities module here: https://github.com/IvanTheProtogen/ExtraAbilities/", "rbxassetid://5273570766")end 
+--ExtraAbilities.Info("This script is using ExtraAbilities module! (Get ExtraAbilities module here: https://github.com/IvanTheProtogen/ExtraAbilities/)")
+--if ExtraAbilities.IsClient()then ExtraAbilities.Notify("This script is using ExtraAbilities module!", "Get ExtraAbilities module here: https://github.com/IvanTheProtogen/ExtraAbilities/", "rbxassetid://5273570766")end 
 
 if ExtraAbilities.IsClient() then -- This function is exploit-only.
 ExtraAbilities.SafeRequire = function(module) -- unlike original require(), this one is less harmful.
